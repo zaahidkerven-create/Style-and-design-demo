@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Style &amp; Design — Bespoke Upholstery, Johannesburg</title>
+<meta name="description" content="Style and Design (Pty) Ltd — bespoke upholstery furniture manufacturer in Johannesburg since 1988. Custom furniture, re-upholstery and loose covers for interior designers, homeowners, corporate and hospitality clients across Southern Africa.">
+<link rel="icon" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream: '#F3EEE9',
+          band: '#E7DFD4',
+          ink: '#241E17',
+          muted: '#8C8071',
+          button: '#EDDCC2',
+        },
+        fontFamily: {
+          display: ['"Playfair Display"', 'serif'],
+          sans: ['"Inter"', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+<style>
+  * { scroll-behavior: smooth; }
+  html, body { background: #F3EEE9; }
+  ::selection { background: #241E17; color: #F3EEE9; }
+
+  a, button { -webkit-tap-highlight-color: transparent; }
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid #241E17;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .eyebrow-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .btn-cream {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: #EDDCC2;
+    color: #241E17;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.75rem 1.4rem;
+    border-radius: 999px;
+    transition: transform 0.35s cubic-bezier(.16,1,.3,1), background-color 0.35s ease;
+  }
+  .btn-cream:hover { background: #F5E9D6; transform: translateY(-2px); }
+  .btn-cream:active { transform: translateY(0) scale(0.97); }
+
+  /* Sticky site nav: transparent over the hero photo, solid once the page covers it */
+  #siteNav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    background: transparent;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+  }
+  #siteNav.nav-scrolled {
+    background: rgba(243,238,233,0.92);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 1px 0 rgba(36,30,23,0.08);
+  }
+  #siteNav .nav-link, #siteNav .site-logo { color: #F3EEE9; transition: color 0.3s ease, opacity 0.3s ease; }
+  #siteNav .nav-link { opacity: 0.9; }
+  #siteNav .nav-link:hover { opacity: 1; }
+  #siteNav.nav-scrolled .nav-link, #siteNav.nav-scrolled .site-logo { color: #241E17; }
+  #siteNav #menuToggle { border-color: rgba(255,255,255,0.4); color: #F3EEE9; transition: border-color 0.3s ease, color 0.3s ease; }
+  #siteNav.nav-scrolled #menuToggle, #siteNav.menu-is-open #menuToggle { border-color: rgba(36,30,23,0.3); color: #241E17; }
+  #siteNav.nav-scrolled .btn-cream { box-shadow: 0 0 0 1px rgba(36,30,23,0.12); }
+
+  .site-logo { font-family: 'Playfair Display', serif; font-weight: 400; }
+
+  /* Full-screen fixed hero: stays pinned behind the page while it scrolls over it */
+  .hero-fixed {
+    position: fixed; inset: 0; height: 100vh; height: 100svh; width: 100%;
+    z-index: 0; overflow: hidden;
+  }
+  .hero-spacer { height: 100vh; height: 100svh; width: 100%; }
+
+  .hero-wordmark {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: #FBF8F3;
+    line-height: 0.95;
+  }
+
+  .hero-photo { filter: sepia(0.35) saturate(1.2) brightness(0.92) contrast(1.05); }
+  @media (max-width: 767px) {
+    #homeHeroImg { object-position: 28% center; }
+  }
+
+  /* Hero text: image is visible immediately, wording eases in shortly after load */
+  .hero-text > * {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.9s cubic-bezier(.16,1,.3,1), transform 0.9s cubic-bezier(.16,1,.3,1);
+  }
+  .hero-text.is-ready > *:nth-child(1) { transition-delay: 0.25s; }
+  .hero-text.is-ready > *:nth-child(2) { transition-delay: 0.4s; }
+  .hero-text.is-ready > *:nth-child(3) { transition-delay: 0.55s; }
+  .hero-text.is-ready > * { opacity: 1; transform: translateY(0); }
+
+  .photo-tile { position: relative; overflow: hidden; border-radius: 20px; }
+  .photo-tile img {
+    transition: transform 1s cubic-bezier(.16,1,.3,1);
+    filter: sepia(0.22) saturate(1.15) contrast(1.03) brightness(0.99);
+  }
+  .cat-link:hover .photo-tile img { transform: scale(1.05); }
+
+  .social-icon { transition: transform 0.3s cubic-bezier(.16,1,.3,1), opacity 0.3s ease; opacity: 0.75; }
+  .social-icon:hover { opacity: 1; transform: translateY(-2px); }
+
+  .reveal { opacity: 0; transform: translateY(34px); transition: opacity 1.3s cubic-bezier(.16,1,.3,1), transform 1.3s cubic-bezier(.16,1,.3,1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.12s; }
+  .reveal-delay-2 { transition-delay: 0.24s; }
+  .reveal-delay-3 { transition-delay: 0.36s; }
+  .reveal-delay-4 { transition-delay: 0.48s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .hero-text > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+
+  .marquee-wrap {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  }
+  .marquee-track { display: flex; width: max-content; will-change: transform; }
+
+  /* Full-screen mobile menu overlay */
+  #mobileMenu {
+    position: fixed; inset: 0; z-index: 45;
+    background: #F3EEE9;
+    opacity: 0; visibility: hidden;
+    transform: translateY(-16px);
+    transition: opacity 0.55s cubic-bezier(.16,1,.3,1), visibility 0.55s cubic-bezier(.16,1,.3,1), transform 0.55s cubic-bezier(.16,1,.3,1);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem;
+  }
+  #mobileMenu.menu-open { opacity: 1; visibility: visible; transform: translateY(0); }
+  .mobile-link {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    color: #241E17;
+    transition: opacity 0.3s ease;
+  }
+  .mobile-link:hover { opacity: 0.6; }
+
+  .text-lift, .text-lift * { text-shadow: 0 1px 2px rgba(250,246,240,0.95), 0 0 16px rgba(250,246,240,0.8); }
+
+  input::placeholder { color: #a89c8a; }
+</style>
+</head>
+<body class="font-sans antialiased">
+
+  <!-- STICKY NAV -->
+  <nav id="siteNav">
+    <div class="flex items-center justify-between px-6 sm:px-10 py-6">
+      <a href="index.html" class="site-logo text-sm sm:text-xl tracking-[0.03em] sm:tracking-[0.08em] whitespace-nowrap">STYLE &amp; DESIGN</a>
+      <ul class="hidden md:flex items-center gap-9">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="about.html" class="nav-link">About Us</a></li>
+        <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+      </ul>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="https://wa.me/27791200897" target="_blank" rel="noopener" aria-label="WhatsApp Us" class="btn-cream !w-10 !h-10 !p-0 justify-center sm:!w-auto sm:!h-auto sm:!px-[1.4rem] sm:!py-3">
+          <svg class="sm:hidden" width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.85.51 3.58 1.4 5.06L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.17c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.11.11-1.79-.11-.41-.13-.94-.3-1.62-.6-2.85-1.23-4.71-4.1-4.85-4.29-.14-.19-1.16-1.55-1.16-2.96 0-1.4.74-2.09 1-2.38.26-.28.57-.35.76-.35.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.57.81 1.98.88 2.12.07.14.11.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.14.43.2.5.31.06.12.06.68-.18 1.36Z"/></svg>
+          <span class="hidden sm:inline">WhatsApp Us</span>
+          <svg class="hidden sm:block" width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <button id="menuToggle" aria-label="Open menu" aria-expanded="false" class="md:hidden w-10 h-10 shrink-0 rounded-full border flex items-center justify-center relative z-50">
+          <svg id="menuIconOpen" width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M1 4h14M1 8h14M1 12h14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <svg id="menuIconClose" width="15" height="15" viewBox="0 0 16 16" fill="none" class="hidden"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div id="mobileMenu">
+    <a href="index.html" class="mobile-link">Home</a>
+    <a href="services.html" class="mobile-link">Services</a>
+    <a href="about.html" class="mobile-link">About Us</a>
+    <a href="contact.html" class="mobile-link">Contact Us</a>
+    <a href="https://wa.me/27791200897" target="_blank" rel="noopener" class="btn-cream mt-4">
+      WhatsApp Us
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+  <!-- FIXED FULL-SCREEN HERO (stays pinned; page scrolls over it) -->
+  <div class="hero-fixed">
+    <picture class="contents">
+      <source media="(max-width: 767px)" srcset="images/hero-home-mobile.jpg">
+      <img id="homeHeroImg" src="images/hero-living-room.jpg" alt="A styled living room with a cream sofa, walnut coffee table and warm ambient lighting" class="hero-photo w-full h-full object-cover">
+    </picture>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/15 to-black/45"></div>
+    <div class="absolute inset-0 bg-[#5a3a1a]/20 mix-blend-multiply"></div>
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 420px 260px at 10% 6%, rgba(10,8,4,0.6), transparent 70%);"></div>
+    <div class="hero-text absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6">
+      <h1 class="hero-wordmark text-[3.1rem] leading-[0.95] sm:text-[5rem] md:text-[6.5rem] lg:text-[8rem] tracking-[0.01em]">
+        STYLE &amp; DESIGN
+      </h1>
+      <p class="eyebrow-label text-cream/90 text-xs sm:text-sm mt-8 sm:mt-11">Furniture and Upholstery Specialists</p>
+      <a href="https://wa.me/27791200897" target="_blank" rel="noopener" class="btn-cream mt-7 sm:mt-8 !px-6 !py-3">
+        WhatsApp Us
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="hero-spacer" aria-hidden="true"></div>
+
+  <!-- PAGE CONTENT (scrolls up and covers the fixed hero) -->
+  <main class="relative z-10 bg-cream">
+
+  <!-- INTRO -->
+  <section class="bg-cream px-6 sm:px-10 lg:px-14 pt-14 pb-12 sm:pt-16 sm:pb-14">
+    <div class="max-w-[1400px] mx-auto grid lg:grid-cols-[1.15fr_1px_0.85fr] gap-6 lg:gap-10 items-start">
+      <div class="reveal">
+        <h2 class="font-display font-medium text-ink text-[1.6rem] sm:text-[2rem] md:text-[2.35rem] leading-[1.2] tracking-[0.01em] uppercase">
+          Custom Upholstery<br>Made For Your Home<br>Since 1988
+        </h2>
+      </div>
+      <div class="hidden lg:block w-px bg-ink/15 h-full"></div>
+      <div class="reveal reveal-delay-1">
+        <p class="text-muted leading-[1.8] text-[0.98rem] max-w-md">
+          We specialise in all types of upholstery furniture, and each piece is tailored to suit our client's unique specifications. Our passionate team of artisans are highly skilled in the modern and traditional ways of upholstery — every item hand-crafted to add beauty, comfort and value to your space.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY GRID (display only — not linked) -->
+  <section class="bg-cream px-6 sm:px-10 lg:px-14 pb-16 sm:pb-20">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
+
+        <div class="cat-link reveal">
+          <div class="photo-tile aspect-[3/4]">
+            <img src="images/cat-armchairs.jpg" alt="Custom upholstered armchair" class="w-full h-full object-cover">
+          </div>
+          <div class="flex items-start justify-between mt-3 gap-2">
+            <span class="eyebrow-label text-ink/80 text-[0.72rem] leading-[1.4]">Armchairs</span>
+          </div>
+        </div>
+
+        <div class="cat-link reveal reveal-delay-1">
+          <div class="photo-tile aspect-[3/4]">
+            <img src="images/cat-corner-suites.jpg" alt="Custom corner suite sofa" class="w-full h-full object-cover">
+          </div>
+          <div class="flex items-start justify-between mt-3 gap-2">
+            <span class="eyebrow-label text-ink/80 text-[0.72rem] leading-[1.4]">Corner<br>Suites</span>
+          </div>
+        </div>
+
+        <div class="cat-link reveal reveal-delay-2">
+          <div class="photo-tile aspect-[3/4]">
+            <img src="images/cat-sofas.jpg" alt="Custom upholstered sofa" class="w-full h-full object-cover">
+          </div>
+          <div class="flex items-start justify-between mt-3 gap-2">
+            <span class="eyebrow-label text-ink/80 text-[0.72rem] leading-[1.4]">Sofas &amp;<br>Couches</span>
+          </div>
+        </div>
+
+        <div class="cat-link reveal reveal-delay-3">
+          <div class="photo-tile aspect-[3/4]">
+            <img src="images/cat-dinner-chairs.jpg" alt="Reupholstered dinner chairs" class="w-full h-full object-cover">
+          </div>
+          <div class="flex items-start justify-between mt-3 gap-2">
+            <span class="eyebrow-label text-ink/80 text-[0.72rem] leading-[1.4]">Dinner<br>Chairs</span>
+          </div>
+        </div>
+
+        <div class="cat-link reveal reveal-delay-4 col-span-2 sm:col-span-1">
+          <div class="photo-tile aspect-[3/4]">
+            <img src="images/cat-custom-furniture.jpg" alt="Bespoke custom furniture piece" class="w-full h-full object-cover">
+          </div>
+          <div class="flex items-start justify-between mt-3 gap-2">
+            <span class="eyebrow-label text-ink/80 text-[0.72rem] leading-[1.4]">Custom<br>Furniture</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="reveal flex justify-center mt-10 sm:mt-12">
+        <a href="services.html" class="btn-cream !bg-transparent !border !border-ink/25 !text-ink hover:!bg-ink hover:!text-cream">
+          View Full Collection
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS (scrolling marquee) -->
+  <section class="bg-[#EDE7DF] px-6 sm:px-0 py-16 sm:py-20 overflow-hidden">
+    <div class="reveal text-center max-w-lg mx-auto mb-14 px-6">
+      <p class="eyebrow-label text-ink/60 text-xs mb-4">Customer Reviews</p>
+      <h2 class="font-display font-medium text-ink text-[1.6rem] sm:text-[2rem] tracking-[0.01em] uppercase">Trusted By Designers,<br>For Decades</h2>
+    </div>
+
+    <div class="reveal marquee-wrap" id="marqueeWrap">
+      <div class="marquee-track" id="marqueeTrack">
+        <div class="shrink-0 w-[320px] sm:w-[400px] mx-4 flex flex-col bg-cream rounded-2xl p-8">
+          <span class="font-display text-4xl text-ink/25 leading-none">&ldquo;</span>
+          <p class="text-ink/85 text-[0.92rem] leading-[1.75] mt-2">I have worked with Style &amp; Design, a family run business, for almost 20 years and we have built a solid understanding of each other with mutual respect. They have manufactured and re-upholstered most of the furniture required by me, as an interior decorator, for my clients. They can easily work off drawings or pictures.</p>
+          <div class="mt-6 flex items-center gap-3">
+            <img src="images/julie-peatling-badge.jpg" alt="Julie Peatling Interiors" class="w-10 h-10 rounded-full object-cover">
+            <div>
+              <p class="text-ink text-sm font-medium">Julie Peatling</p>
+              <p class="text-muted text-xs">Interior Designer</p>
+            </div>
+          </div>
+        </div>
+        <div class="shrink-0 w-[320px] sm:w-[400px] mx-4 flex flex-col bg-cream rounded-2xl p-8">
+          <span class="font-display text-4xl text-ink/25 leading-none">&ldquo;</span>
+          <p class="text-ink/85 text-[0.92rem] leading-[1.75] mt-2">Thanks Style and Design for the amazing service and outstanding workmanship you've provided me with over the past 25 years. I would highly recommend their specialised upholstery services.</p>
+          <div class="mt-6 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-ink/10 flex items-center justify-center font-display text-ink/70 text-sm">CW</div>
+            <div>
+              <p class="text-ink text-sm font-medium">Caline Williams-Wynn</p>
+              <p class="text-muted text-xs">Interior Designer, Founder of Artchoke</p>
+            </div>
+          </div>
+        </div>
+        <div class="shrink-0 w-[320px] sm:w-[400px] mx-4 flex flex-col bg-cream rounded-2xl p-8">
+          <span class="font-display text-4xl text-ink/25 leading-none">&ldquo;</span>
+          <p class="text-ink/85 text-[0.92rem] leading-[1.75] mt-2">Thank you Style and Design for great service and superb workmanship! Attention to detail and meeting deadlines, assistance in sourcing material. Would highly recommend using them.</p>
+          <div class="mt-6 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-ink/10 flex items-center justify-center font-display text-ink/70 text-sm">MB</div>
+            <div>
+              <p class="text-ink text-sm font-medium">Momeen Bodiat</p>
+              <p class="text-muted text-xs">Home Owner</p>
+            </div>
+          </div>
+        </div>
+        <div class="shrink-0 w-[320px] sm:w-[400px] mx-4 flex flex-col bg-cream rounded-2xl p-8" aria-hidden="true">
+          <span class="font-display text-4xl text-ink/25 leading-none">&ldquo;</span>
+          <p class="text-ink/85 text-[0.92rem] leading-[1.75] mt-2">I have worked with Style &amp; Design, a family run business, for almost 20 years and we have built a solid understanding of each other with mutual respect. They have manufactured and re-upholstered most of the furniture required by me, as an interior decorator, for my clients. They can easily work off drawings or pictures.</p>
+          <div class="mt-6 flex items-center gap-3">
+            <img src="images/julie-peatling-badge.jpg" alt="" class="w-10 h-10 rounded-full object-cover">
+            <div>
+              <p class="text-ink text-sm font-medium">Julie Peatling</p>
+              <p class="text-muted text-xs">Interior Designer</p>
+            </div>
+          </div>
+        </div>
+        <div class="shrink-0 w-[320px] sm:w-[400px] mx-4 flex flex-col bg-cream rounded-2xl p-8" aria-hidden="true">
+          <span class="font-display text-4xl text-ink/25 leading-none">&ldquo;</span>
+          <p class="text-ink/85 text-[0.92rem] leading-[1.75] mt-2">Thanks Style and Design for the amazing service and outstanding workmanship you've provided me with over the past 25 years. I would highly recommend their specialised upholstery services.</p>
+          <div class="mt-6 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-ink/10 flex items-center justify-center font-display text-ink/70 text-sm">CW</div>
+            <div>
+              <p class="text-ink text-sm font-medium">Caline Williams-Wynn</p>
+              <p class="text-muted text-xs">Interior Designer, Founder of Artchoke</p>
+            </div>
+          </div>
+        </div>
+        <div class="shrink-0 w-[320px] sm:w-[400px] mx-4 flex flex-col bg-cream rounded-2xl p-8" aria-hidden="true">
+          <span class="font-display text-4xl text-ink/25 leading-none">&ldquo;</span>
+          <p class="text-ink/85 text-[0.92rem] leading-[1.75] mt-2">Thank you Style and Design for great service and superb workmanship! Attention to detail and meeting deadlines, assistance in sourcing material. Would highly recommend using them.</p>
+          <div class="mt-6 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-ink/10 flex items-center justify-center font-display text-ink/70 text-sm">MB</div>
+            <div>
+              <p class="text-ink text-sm font-medium">Momeen Bodiat</p>
+              <p class="text-muted text-xs">Home Owner</p>
+            </div>
+          </div>
+        </div>
+        <div class="shrink-0 w-[320px] sm:w-[400px] mx-4 flex flex-col bg-cream rounded-2xl p-8" aria-hidden="true">
+          <span class="font-display text-4xl text-ink/25 leading-none">&ldquo;</span>
+          <p class="text-ink/85 text-[0.92rem] leading-[1.75] mt-2">I have worked with Style &amp; Design, a family run business, for almost 20 years and we have built a solid understanding of each other with mutual respect. They have manufactured and re-upholstered most of the furniture required by me, as an interior decorator, for my clients. They can easily work off drawings or pictures.</p>
+          <div class="mt-6 flex items-center gap-3">
+            <img src="images/julie-peatling-badge.jpg" alt="" class="w-10 h-10 rounded-full object-cover">
+            <div>
+              <p class="text-ink text-sm font-medium">Julie Peatling</p>
+              <p class="text-muted text-xs">Interior Designer</p>
+            </div>
+          </div>
+        </div>
+        <div class="shrink-0 w-[320px] sm:w-[400px] mx-4 flex flex-col bg-cream rounded-2xl p-8" aria-hidden="true">
+          <span class="font-display text-4xl text-ink/25 leading-none">&ldquo;</span>
+          <p class="text-ink/85 text-[0.92rem] leading-[1.75] mt-2">Thanks Style and Design for the amazing service and outstanding workmanship you've provided me with over the past 25 years. I would highly recommend their specialised upholstery services.</p>
+          <div class="mt-6 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-ink/10 flex items-center justify-center font-display text-ink/70 text-sm">CW</div>
+            <div>
+              <p class="text-ink text-sm font-medium">Caline Williams-Wynn</p>
+              <p class="text-muted text-xs">Interior Designer, Founder of Artchoke</p>
+            </div>
+          </div>
+        </div>
+        <div class="shrink-0 w-[320px] sm:w-[400px] mx-4 flex flex-col bg-cream rounded-2xl p-8" aria-hidden="true">
+          <span class="font-display text-4xl text-ink/25 leading-none">&ldquo;</span>
+          <p class="text-ink/85 text-[0.92rem] leading-[1.75] mt-2">Thank you Style and Design for great service and superb workmanship! Attention to detail and meeting deadlines, assistance in sourcing material. Would highly recommend using them.</p>
+          <div class="mt-6 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-ink/10 flex items-center justify-center font-display text-ink/70 text-sm">MB</div>
+            <div>
+              <p class="text-ink text-sm font-medium">Momeen Bodiat</p>
+              <p class="text-muted text-xs">Home Owner</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND + FOOTER -->
+  <footer class="bg-band">
+    <div class="relative overflow-hidden reveal">
+      <div class="absolute inset-0">
+        <img src="images/cta-band-bg.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover" style="filter: blur(0.4px) saturate(0.95); object-position: center 70%;">
+        <div class="absolute inset-0" style="background: rgba(231,223,212,0.76);"></div>
+      </div>
+      <div class="relative z-10 text-lift px-6 sm:px-10 lg:px-14 pt-16 pb-14 sm:pt-20 sm:pb-16 text-center">
+        <h2 class="font-display font-medium text-ink text-[1.4rem] sm:text-[1.7rem] tracking-[0.04em] uppercase">Have Questions?</h2>
+        <p class="text-ink/70 text-sm mt-3">Get in touch — we're always here to help with your fabric, sizing and design.</p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a href="https://wa.me/27791200897" target="_blank" rel="noopener" class="btn-cream">
+            WhatsApp Us
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="tel:+27695745668" class="btn-cream !bg-transparent !border !border-ink/25 !text-ink hover:!bg-ink hover:!text-cream">Call 069 574 5668</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-ink/10 px-6 sm:px-10 lg:px-14 py-14">
+      <div class="max-w-[1400px] mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+        <div class="reveal">
+          <a href="index.html" class="site-logo !text-ink text-lg tracking-[0.06em]">STYLE &amp; DESIGN</a>
+          <p class="text-muted text-sm leading-relaxed mt-4 max-w-[220px]">Furniture and Upholstery Specialists — bespoke upholstery, Johannesburg, since 1988.</p>
+          <div class="flex items-center gap-4 mt-5">
+            <a href="https://www.instagram.com/styleanddesign_furniture/" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon text-ink">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.facebook.com/styleanddesign.co.za" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon text-ink">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M15 8.5h2.5V5H15c-2.2 0-4 1.8-4 4v2.5H8.5V15H11v6h3v-6h2.5l.5-3.5H14V9c0-.6.4-1 1-1Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <p class="eyebrow-label text-ink/60 text-xs mb-4">Navigate</p>
+          <ul class="space-y-3 text-sm text-ink/80">
+            <li><a href="index.html" class="hover:text-ink transition-colors duration-300">Home</a></li>
+            <li><a href="services.html" class="hover:text-ink transition-colors duration-300">Services</a></li>
+            <li><a href="about.html" class="hover:text-ink transition-colors duration-300">About Us</a></li>
+            <li><a href="contact.html" class="hover:text-ink transition-colors duration-300">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="reveal reveal-delay-2">
+          <p class="eyebrow-label text-ink/60 text-xs mb-4">Contact</p>
+          <ul class="space-y-3 text-sm text-ink/80">
+            <li><a href="tel:+27695745668" class="hover:text-ink transition-colors duration-300">069 574 5668</a></li>
+            <li><a href="https://wa.me/27791200897" class="hover:text-ink transition-colors duration-300">079 120 0897</a></li>
+            <li><a href="mailto:info@styleanddesign.co.za" class="hover:text-ink transition-colors duration-300">info@styleanddesign.co.za</a></li>
+            <li>4 Ena Street, Florida, Johannesburg</li>
+          </ul>
+        </div>
+
+        <div class="reveal reveal-delay-3">
+          <p class="eyebrow-label text-ink/60 text-xs mb-4">Sign Up For Newsletter</p>
+          <form class="flex items-center gap-2" onsubmit="return false;">
+            <input type="email" required placeholder="Your email" class="min-w-0 flex-1 bg-cream border border-ink/15 rounded-full px-4 py-2.5 text-sm text-ink placeholder:text-ink/40 focus:border-ink/40 transition-colors duration-300">
+            <button type="submit" aria-label="Subscribe" class="w-10 h-10 shrink-0 rounded-full bg-ink text-cream flex items-center justify-center hover:bg-ink/85 transition-colors duration-300">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-ink/10 px-6 sm:px-10 lg:px-14 py-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-ink/55 text-center">
+        <p>Copyright 2026 &copy; Style and Design</p>
+        <p>Bespoke upholstery, Johannesburg — Southern Africa</p>
+      </div>
+    </div>
+  </footer>
+
+  </main>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    const siteNav = document.getElementById('siteNav');
+    function coverThreshold() { return window.innerHeight - 90; }
+    function onScroll() {
+      siteNav.classList.toggle('nav-scrolled', window.scrollY > coverThreshold());
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+
+    // Image shows immediately; the wording eases in shortly after everything has loaded.
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelector('.hero-text')?.classList.add('is-ready');
+      }, 150);
+    });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIconOpen = document.getElementById('menuIconOpen');
+    const menuIconClose = document.getElementById('menuIconClose');
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('menu-open');
+      siteNav.classList.remove('menu-is-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuIconOpen.classList.remove('hidden');
+      menuIconClose.classList.add('hidden');
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    }
+    function openMobileMenu() {
+      mobileMenu.classList.add('menu-open');
+      siteNav.classList.add('menu-is-open');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      menuIconOpen.classList.add('hidden');
+      menuIconClose.classList.remove('hidden');
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    }
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      isOpen ? closeMobileMenu() : openMobileMenu();
+    });
+    mobileMenu.querySelectorAll('.mobile-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        // Same-tab navigation is about to happen -- skip the close animation
+        // so the tap feels instant instead of jittering before the new page loads.
+        mobileMenu.classList.remove('menu-open');
+        siteNav.classList.remove('menu-is-open');
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+      });
+    });
+    const mobileWhatsappLink = mobileMenu.querySelector('a[target="_blank"]');
+    if (mobileWhatsappLink) mobileWhatsappLink.addEventListener('click', closeMobileMenu);
+
+    // Testimonials marquee: scrolls smoothly on its own via transform, no
+    // manual interaction -- it just plays continuously, on phone and desktop.
+    const marqueeWrap = document.getElementById('marqueeWrap');
+    const marqueeTrack = document.getElementById('marqueeTrack');
+    if (marqueeWrap && marqueeTrack) {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const AUTO_SPEED = 40; // px per second
+      let posX = 0;
+      let lastTs = null;
+      function tick(ts) {
+        if (lastTs === null) lastTs = ts;
+        const dt = (ts - lastTs) / 1000;
+        lastTs = ts;
+        if (!prefersReducedMotion) {
+          const setWidth = marqueeTrack.scrollWidth / 3;
+          posX -= AUTO_SPEED * dt;
+          if (Math.abs(posX) >= setWidth) posX += setWidth;
+          marqueeTrack.style.transform = `translateX(${posX}px)`;
+        }
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+  </script>
+</body>
+</html>
