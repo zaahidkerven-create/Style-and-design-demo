@@ -153,6 +153,27 @@
   .mobile-link { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: #241E17; transition: opacity 0.3s ease; }
   .mobile-link:hover { opacity: 0.6; }
 
+  .nav-dropdown { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); padding-top: 14px; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+  .group:hover .nav-dropdown, .group:focus-within .nav-dropdown { opacity: 1; visibility: visible; }
+  .nav-dropdown-panel { min-width: 234px; background: #F3EEE9; border: 1px solid rgba(36,30,23,0.1); border-radius: 16px; box-shadow: 0 18px 40px -12px rgba(36,30,23,0.28), 0 2px 8px rgba(36,30,23,0.06); padding: 0.5rem; transform: translateY(6px); transition: transform 0.3s cubic-bezier(.16,1,.3,1); }
+  .group:hover .nav-dropdown-panel, .group:focus-within .nav-dropdown-panel { transform: translateY(0); }
+  .nav-dropdown-link { display: block; font-family: 'Inter', sans-serif; font-size: 0.85rem; color: #241E17; opacity: 0.78; padding: 0.65rem 0.9rem; border-radius: 10px; transition: background-color 0.25s ease, opacity 0.25s ease; white-space: nowrap; }
+  .nav-dropdown-link:hover { background: rgba(36,30,23,0.06); opacity: 1; }
+  .nav-chevron { transition: transform 0.3s cubic-bezier(.16,1,.3,1); }
+  .group:hover .nav-chevron, .group:focus-within .nav-chevron { transform: rotate(180deg); }
+
+  .mobile-sublink { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #6b5f4f; transition: color 0.3s ease; }
+  .mobile-sublink:hover { color: #241E17; }
+
+  .mobile-services-toggle { display: inline-flex; align-items: center; gap: 0.5rem; background: none; border: none; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 1.75rem; color: #241E17; transition: opacity 0.3s ease; }
+  .mobile-services-toggle:hover { opacity: 0.6; }
+  .mobile-chevron { transition: transform 0.35s cubic-bezier(.16,1,.3,1); color: rgba(36,30,23,0.5); }
+  .mobile-services-toggle[aria-expanded="true"] .mobile-chevron { transform: rotate(180deg); }
+  .mobile-services-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s cubic-bezier(.16,1,.3,1); width: 100%; }
+  .mobile-services-panel.is-open { grid-template-rows: 1fr; }
+  .mobile-services-panel-inner { overflow: hidden; display: flex; flex-direction: column; align-items: center; gap: 0.625rem; }
+  .mobile-services-panel.is-open .mobile-services-panel-inner { padding-top: 0.5rem; }
+
   input::placeholder, textarea::placeholder { color: #a89c8a; }
 </style>
 </head>
@@ -164,7 +185,20 @@
       <a href="index.html" class="site-logo text-sm sm:text-xl tracking-[0.03em] sm:tracking-[0.08em] whitespace-nowrap">STYLE &amp; DESIGN</a>
       <ul class="hidden md:flex items-center gap-9">
         <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li class="relative group">
+          <a href="reupholstery.html" class="nav-link inline-flex items-center gap-1.5">
+            Services
+            <svg class="nav-chevron mt-px" width="9" height="9" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="nav-dropdown">
+            <div class="nav-dropdown-panel">
+              <a href="reupholstery.html" class="nav-dropdown-link">Reupholstery</a>
+              <a href="custom-furniture.html" class="nav-dropdown-link">Custom Furniture</a>
+              <a href="fabric-guarding.html" class="nav-dropdown-link">Fabric Guarding &amp; Pre-Shrinking</a>
+              <a href="cane-timber-restoration.html" class="nav-dropdown-link">Cane &amp; Timber Restoration</a>
+            </div>
+          </div>
+        </li>
         <li><a href="about.html" class="nav-link">About Us</a></li>
         <li><a href="contact.html" class="nav-link !opacity-100">Contact Us</a></li>
       </ul>
@@ -183,7 +217,18 @@
   </nav>
   <div id="mobileMenu">
     <a href="index.html" class="mobile-link">Home</a>
-    <a href="services.html" class="mobile-link">Services</a>
+    <button type="button" class="mobile-services-toggle" aria-expanded="false" aria-controls="mobileServicesPanel">
+      Services
+      <svg class="mobile-chevron" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div id="mobileServicesPanel" class="mobile-services-panel">
+      <div class="mobile-services-panel-inner">
+        <a href="reupholstery.html" class="mobile-sublink">Reupholstery</a>
+        <a href="custom-furniture.html" class="mobile-sublink">Custom Furniture</a>
+        <a href="fabric-guarding.html" class="mobile-sublink">Fabric Guarding &amp; Pre-Shrinking</a>
+        <a href="cane-timber-restoration.html" class="mobile-sublink">Cane &amp; Timber Restoration</a>
+      </div>
+    </div>
     <a href="about.html" class="mobile-link">About Us</a>
     <a href="contact.html" class="mobile-link">Contact Us</a>
     <a href="https://wa.me/27791200897" target="_blank" rel="noopener" class="btn-cream mt-4">
@@ -334,7 +379,7 @@
           <p class="eyebrow-label text-ink/60 text-xs mb-4">Navigate</p>
           <ul class="space-y-3 text-sm text-ink/80">
             <li><a href="index.html" class="hover:text-ink transition-colors duration-300">Home</a></li>
-            <li><a href="services.html" class="hover:text-ink transition-colors duration-300">Services</a></li>
+            <li><a href="reupholstery.html" class="hover:text-ink transition-colors duration-300">Services</a></li>
             <li><a href="about.html" class="hover:text-ink transition-colors duration-300">About Us</a></li>
             <li><a href="contact.html" class="hover:text-ink transition-colors duration-300">Contact Us</a></li>
           </ul>
@@ -402,6 +447,8 @@
     const mobileMenu = document.getElementById('mobileMenu');
     const menuIconOpen = document.getElementById('menuIconOpen');
     const menuIconClose = document.getElementById('menuIconClose');
+    const mobileServicesToggle = document.querySelector('.mobile-services-toggle');
+    const mobileServicesPanel = document.getElementById('mobileServicesPanel');
     function closeMobileMenu() {
       mobileMenu.classList.remove('menu-open');
       siteNav.classList.remove('menu-is-open');
@@ -410,6 +457,8 @@
       menuIconClose.classList.add('hidden');
       document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
+      mobileServicesPanel?.classList.remove('is-open');
+      mobileServicesToggle?.setAttribute('aria-expanded', 'false');
     }
     function openMobileMenu() {
       mobileMenu.classList.add('menu-open');
@@ -424,7 +473,12 @@
       const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
       isOpen ? closeMobileMenu() : openMobileMenu();
     });
-    mobileMenu.querySelectorAll('.mobile-link').forEach((link) => {
+    mobileServicesToggle?.addEventListener('click', () => {
+      const isOpen = mobileServicesToggle.getAttribute('aria-expanded') === 'true';
+      mobileServicesToggle.setAttribute('aria-expanded', String(!isOpen));
+      mobileServicesPanel.classList.toggle('is-open', !isOpen);
+    });
+    mobileMenu.querySelectorAll('.mobile-link, .mobile-sublink').forEach((link) => {
       link.addEventListener('click', () => {
         // Same-tab navigation is about to happen -- skip the close animation
         // so the tap feels instant instead of jittering before the new page loads.

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us — Style &amp; Design</title>
-<meta name="description" content="Style and Design (Pty) Ltd — established in 1988 as Master Interiors CC, a family-run bespoke upholstery furniture manufacturer based in Johannesburg, serving interior designers, homeowners, corporate and hospitality clients across Southern Africa.">
+<title>Custom Furniture — Style &amp; Design</title>
+<meta name="description" content="Made-to-measure upholstered furniture and loose covers from Style and Design — sofas, headboards, ottomans and more, built to order in your fabric. Johannesburg.">
 <link rel="icon" href="images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -93,9 +93,6 @@
     line-height: 0.95;
   }
   .hero-photo { filter: sepia(0.35) saturate(1.2) brightness(0.92) contrast(1.05); }
-  @media (min-width: 768px) {
-    #aboutHeroImg { object-position: 50% 78%; }
-  }
 
   .hero-text > * {
     opacity: 0;
@@ -107,7 +104,6 @@
   .hero-text.is-ready > * { opacity: 1; transform: translateY(0); }
 
   .photo-tile { position: relative; overflow: hidden; border-radius: 20px; }
-  .photo-tile img { filter: sepia(0.22) saturate(1.15) contrast(1.03) brightness(0.99); }
 
   .blank-tile {
     position: relative;
@@ -127,22 +123,15 @@
     color: rgba(36,30,23,0.18);
   }
 
-  .value-row { position: relative; }
-  .value-row::before {
-    content: '';
-    position: absolute; top: 22px; left: 12%; right: 12%; height: 1px;
-    background: rgba(36,30,23,0.15);
-  }
-  @media (max-width: 767px) { .value-row::before { display: none; } }
-  .numbered-circle {
-    width: 44px; height: 44px; border-radius: 999px;
-    background: #241E17; color: #F3EEE9;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Playfair Display', serif; font-size: 1rem;
-    position: relative; z-index: 1;
+  .spotlight-panel {
+    position: relative;
+    border-radius: 28px;
+    background: #FBF8F3;
+    border: 1px solid rgba(36,30,23,0.1);
+    box-shadow: 0 30px 60px -30px rgba(36,30,23,0.22), 0 2px 10px rgba(36,30,23,0.05);
   }
 
-  .quote-mark { font-family: 'Playfair Display', serif; line-height: 1; }
+  .check-item { display: flex; align-items: flex-start; gap: 0.75rem; }
 
   .social-icon { transition: transform 0.3s cubic-bezier(.16,1,.3,1), opacity 0.3s ease; opacity: 0.75; }
   .social-icon:hover { opacity: 1; transform: translateY(-2px); }
@@ -152,6 +141,7 @@
   .reveal-delay-1 { transition-delay: 0.12s; }
   .reveal-delay-2 { transition-delay: 0.24s; }
   .reveal-delay-3 { transition-delay: 0.36s; }
+  .reveal-delay-4 { transition-delay: 0.48s; }
 
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
@@ -176,6 +166,7 @@
   .group:hover .nav-dropdown-panel, .group:focus-within .nav-dropdown-panel { transform: translateY(0); }
   .nav-dropdown-link { display: block; font-family: 'Inter', sans-serif; font-size: 0.85rem; color: #241E17; opacity: 0.78; padding: 0.65rem 0.9rem; border-radius: 10px; transition: background-color 0.25s ease, opacity 0.25s ease; white-space: nowrap; }
   .nav-dropdown-link:hover { background: rgba(36,30,23,0.06); opacity: 1; }
+  .nav-dropdown-link.is-current { opacity: 1; background: rgba(36,30,23,0.06); }
   .nav-chevron { transition: transform 0.3s cubic-bezier(.16,1,.3,1); }
   .group:hover .nav-chevron, .group:focus-within .nav-chevron { transform: rotate(180deg); }
 
@@ -190,6 +181,7 @@
   .mobile-services-panel.is-open { grid-template-rows: 1fr; }
   .mobile-services-panel-inner { overflow: hidden; display: flex; flex-direction: column; align-items: center; gap: 0.625rem; }
   .mobile-services-panel.is-open .mobile-services-panel-inner { padding-top: 0.5rem; }
+  .mobile-sublink.is-current { color: #241E17; font-weight: 500; }
 
   .text-lift, .text-lift * { text-shadow: 0 1px 2px rgba(250,246,240,0.95), 0 0 16px rgba(250,246,240,0.8); }
 
@@ -205,20 +197,20 @@
       <ul class="hidden md:flex items-center gap-9">
         <li><a href="index.html" class="nav-link">Home</a></li>
         <li class="relative group">
-          <a href="reupholstery.html" class="nav-link inline-flex items-center gap-1.5">
+          <a href="reupholstery.html" class="nav-link !opacity-100 inline-flex items-center gap-1.5">
             Services
             <svg class="nav-chevron mt-px" width="9" height="9" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
           <div class="nav-dropdown">
             <div class="nav-dropdown-panel">
               <a href="reupholstery.html" class="nav-dropdown-link">Reupholstery</a>
-              <a href="custom-furniture.html" class="nav-dropdown-link">Custom Furniture</a>
+              <a href="custom-furniture.html" class="nav-dropdown-link is-current">Custom Furniture</a>
               <a href="fabric-guarding.html" class="nav-dropdown-link">Fabric Guarding &amp; Pre-Shrinking</a>
               <a href="cane-timber-restoration.html" class="nav-dropdown-link">Cane &amp; Timber Restoration</a>
             </div>
           </div>
         </li>
-        <li><a href="about.html" class="nav-link !opacity-100">About Us</a></li>
+        <li><a href="about.html" class="nav-link">About Us</a></li>
         <li><a href="contact.html" class="nav-link">Contact Us</a></li>
       </ul>
       <div class="flex items-center gap-2 sm:gap-3">
@@ -243,7 +235,7 @@
     <div id="mobileServicesPanel" class="mobile-services-panel">
       <div class="mobile-services-panel-inner">
         <a href="reupholstery.html" class="mobile-sublink">Reupholstery</a>
-        <a href="custom-furniture.html" class="mobile-sublink">Custom Furniture</a>
+        <a href="custom-furniture.html" class="mobile-sublink is-current">Custom Furniture</a>
         <a href="fabric-guarding.html" class="mobile-sublink">Fabric Guarding &amp; Pre-Shrinking</a>
         <a href="cane-timber-restoration.html" class="mobile-sublink">Cane &amp; Timber Restoration</a>
       </div>
@@ -259,229 +251,167 @@
   <!-- FIXED FULL-SCREEN HERO -->
   <div class="hero-fixed">
     <picture class="contents">
-      <source media="(max-width: 767px)" srcset="images/about-hero-mobile.jpg">
-      <img id="aboutHeroImg" src="images/about-hero-desktop.jpg" alt="A bright architectural room with a tan corner sectional" class="hero-photo w-full h-full object-cover">
+      <source media="(max-width: 767px)" srcset="images/services-hero-mobile.jpg">
+      <img src="images/services-hero-desktop.jpg" alt="A cosy styled nook with a dried branch and a white sofa" class="hero-photo w-full h-full object-cover" style="object-position: 50% 88%;">
     </picture>
     <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/15 to-black/45"></div>
     <div class="absolute inset-0 bg-[#5a3a1a]/20 mix-blend-multiply"></div>
     <div class="absolute inset-0" style="background: radial-gradient(ellipse 420px 260px at 10% 6%, rgba(10,8,4,0.6), transparent 70%);"></div>
     <div class="hero-text absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6">
-      <h1 class="hero-wordmark text-[2.9rem] leading-[0.95] sm:text-[4.5rem] md:text-[5.5rem] lg:text-[6.5rem] tracking-[0.01em]">
-        ABOUT US
+      <h1 class="hero-wordmark text-[2.5rem] leading-[0.95] sm:text-[3.8rem] md:text-[4.8rem] lg:text-[5.6rem] tracking-[0.01em]">
+        CUSTOM FURNITURE
       </h1>
-      <p class="eyebrow-label text-cream/90 text-xs sm:text-sm mt-6 sm:mt-8">Est. 1988 &middot; Johannesburg</p>
+      <p class="eyebrow-label text-cream/90 text-xs sm:text-sm mt-6 sm:mt-8">Built To Your Vision</p>
     </div>
   </div>
   <div class="hero-spacer" aria-hidden="true"></div>
 
   <main class="relative z-10 bg-cream">
 
-  <!-- ABOUT -->
-  <section class="bg-cream px-6 sm:px-10 lg:px-14 pt-14 pb-16 sm:pt-16 sm:pb-20">
-    <div class="max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-      <div class="reveal">
-        <p class="eyebrow-label text-ink/60 text-xs mb-5">About Style &amp; Design</p>
-        <h2 class="font-display font-medium text-ink text-[1.6rem] sm:text-[2rem] md:text-[2.35rem] leading-[1.2] tracking-[0.01em] uppercase mb-6">
-          A Family-Run<br>Atelier, Est. 1988
-        </h2>
-        <div class="space-y-5">
-          <p class="text-muted leading-[1.8] text-[0.98rem] max-w-md">
-            Established in 1988 as Master Interiors CC, Style and Design (Pty) Ltd is now a leading manufacturer and exporter of high quality bespoke furniture, appreciated throughout the African continent. To this day, we maintain our reputation for excellent craftsmanship and outstanding service to clientele ranging from interior designers to high-end homeowners, including the corporate and hospitality industries.
-          </p>
-          <p class="text-muted leading-[1.8] text-[0.98rem] max-w-md">
-            We specialise in all types of upholstery furniture, and each piece is tailored to suit our client's unique specifications. Our factory is based in Johannesburg and also provides contract manufacturing and outsourcing services across Southern Africa.
-          </p>
-        </div>
-        <p class="font-display italic text-ink/70 text-lg mt-7">— Style &amp; Design, Johannesburg</p>
-      </div>
-      <div class="reveal reveal-delay-1 blank-tile aspect-[4/3]">
-        <span class="tile-mark">
-          <svg width="30" height="30" viewBox="0 0 28 28" fill="none"><rect x="3.5" y="3.5" width="21" height="21" rx="2" stroke="currentColor" stroke-width="1.3" stroke-dasharray="2.5 3"/><path d="M4 19l6-6 4 4 5-7 5 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="9.5" r="1.6" stroke="currentColor" stroke-width="1.3"/></svg>
-        </span>
-      </div>
-    </div>
-  </section>
-
-  <!-- PULL QUOTE -->
-  <section class="bg-[#EDE7DF] px-6 sm:px-10 lg:px-14 py-14 sm:py-16 text-center">
-    <p class="reveal font-display italic text-ink text-[1.5rem] sm:text-[2rem] leading-[1.2] max-w-2xl mx-auto tracking-[0.005em]">
-      &ldquo;Quality Solution You Can Trust&rdquo;
-    </p>
-  </section>
-
-  <!-- PHILOSOPHY -->
-  <section class="bg-cream px-6 sm:px-10 lg:px-14 pt-16 pb-20 sm:pt-20 sm:pb-24">
+  <!-- INTRO -->
+  <section class="bg-cream px-6 sm:px-10 lg:px-14 pt-20 pb-20 sm:pt-28 sm:pb-24">
     <div class="max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
       <div class="reveal">
-        <p class="eyebrow-label text-ink/60 text-xs sm:text-sm mb-6">Our Philosophy</p>
+        <p class="eyebrow-label text-ink/60 text-xs sm:text-sm mb-6">The Service</p>
         <h2 class="font-display font-medium text-ink text-[2.1rem] sm:text-[2.9rem] md:text-[3.3rem] leading-[1.08] tracking-[0.01em] uppercase mb-7">
-          Craft Worth<br>Keeping
+          Made To<br>Measure
         </h2>
         <p class="text-muted leading-[1.85] text-[1.05rem] sm:text-[1.1rem] max-w-lg">
-          Our passionate team of artisans are highly skilled in the modern and traditional ways of upholstery. Our superior workmanship and attention to detail are the defining elements of our experience in the art of upholstery furniture — every item hand-crafted according to each client's unique specifications, adding beauty, comfort and value to your space.
+          Some pieces don't exist yet. We build upholstered furniture from scratch — sofas, headboards, ottomans, daybeds and more — to your exact dimensions, in fabric of your choosing, hand-finished by the same artisans who've been doing this since 1988.
         </p>
       </div>
-      <div class="reveal reveal-delay-1 photo-tile aspect-[9/8] lg:aspect-[4/3.3]">
-        <img src="images/philosophy-living-room.jpg" alt="A warm, minimalist living room styled with a cream sectional sofa" class="w-full h-full object-cover">
+      <div class="reveal reveal-delay-1 blank-tile aspect-[9/8] lg:aspect-[4/3.3]">
+        <span class="tile-mark"><svg width="150" height="112" viewBox="0 0 28 28" fill="none"><rect x="4" y="11" width="20" height="7" rx="1.5" transform="rotate(-8 14 14.5)" stroke="currentColor" stroke-width="1"/><path d="M7.6 11.7l1 3.4M11.6 10.9l1 3.4M15.6 10.1l1 3.4M19.6 9.4l1 3.4" stroke="currentColor" stroke-width="0.9" stroke-linecap="round"/></svg></span>
       </div>
     </div>
   </section>
 
-  <!-- SERVICES OVERVIEW -->
+  <!-- WHAT'S INCLUDED -->
   <section class="relative overflow-hidden px-6 sm:px-10 lg:px-14 py-16 sm:py-20">
     <div class="absolute inset-0">
-      <img src="images/services-overview-bg.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover" style="filter: blur(0.4px) saturate(0.95);">
-      <div class="absolute inset-0" style="background: rgba(243,238,233,0.76);"></div>
+      <img src="images/real-wall-panels.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover" style="filter: blur(0.4px) saturate(0.95);">
+      <div class="absolute inset-0" style="background: rgba(231,223,212,0.85);"></div>
     </div>
     <div class="relative z-10 text-lift">
-      <p class="reveal eyebrow-label text-ink/60 text-xs mb-3 text-center">What We Offer</p>
-      <h2 class="reveal font-display font-medium text-ink text-[1.5rem] sm:text-[1.85rem] tracking-[0.01em] uppercase text-center mb-14 sm:mb-16">Services</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-0 max-w-5xl mx-auto">
-        <a href="reupholstery.html" class="reveal lg:px-6 lg:border-r lg:border-ink/15 text-center group">
-          <svg class="mx-auto text-ink/70 mb-4" width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="9" cy="9" r="2.4" stroke="currentColor" stroke-width="1.4"/><path d="M6 20l6-9 4 5 3-4 3 8H6Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
-          <h3 class="font-display text-lg text-ink mb-2 group-hover:opacity-70 transition-opacity duration-300">Reupholstery</h3>
-          <p class="text-ink/70 text-sm leading-relaxed">Modern and traditional upholstery techniques, hand-crafted to your specification.</p>
-        </a>
-        <a href="custom-furniture.html" class="reveal reveal-delay-1 lg:px-6 lg:border-r lg:border-ink/15 text-center group">
-          <svg class="mx-auto text-ink/70 mb-4" width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3c3 4 8 6 8 12a8 8 0 1 1-16 0c0-6 5-8 8-12Z" stroke="currentColor" stroke-width="1.4"/></svg>
-          <h3 class="font-display text-lg text-ink mb-2 group-hover:opacity-70 transition-opacity duration-300">Custom Furniture</h3>
-          <p class="text-ink/70 text-sm leading-relaxed">Bespoke pieces built from your drawings, photographs, or an idea you have in mind — including loose covers.</p>
-        </a>
-        <a href="fabric-guarding.html" class="reveal reveal-delay-2 lg:px-6 lg:border-r lg:border-ink/15 text-center group">
-          <svg class="mx-auto text-ink/70 mb-4" width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3l9 4v8c0 5.5-3.8 9.3-9 11-5.2-1.7-9-5.5-9-11V7l9-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
-          <h3 class="font-display text-lg text-ink mb-2 group-hover:opacity-70 transition-opacity duration-300">Fabric Guarding &amp; Pre-Shrinking</h3>
-          <p class="text-ink/70 text-sm leading-relaxed">Guarding and pre-shrinking treatments so your piece keeps its finish.</p>
-        </a>
-        <a href="cane-timber-restoration.html" class="reveal reveal-delay-3 lg:px-6 text-center group">
-          <svg class="mx-auto text-ink/70 mb-4" width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="2" y="2" width="24" height="24" rx="4" stroke="currentColor" stroke-width="1.4"/><path d="M2 10l8-8M2 18l16-16M6 26l20-20M14 26l12-12M22 26l4-4" stroke="currentColor" stroke-width="1" stroke-opacity="0.45"/><path d="M26 10l-8-8M26 18L10 2M22 26L2 6M14 2L2 14" stroke="currentColor" stroke-width="1" stroke-opacity="0.45"/></svg>
-          <h3 class="font-display text-lg text-ink mb-2 group-hover:opacity-70 transition-opacity duration-300">Cane &amp; Timber Restoration</h3>
-          <p class="text-ink/70 text-sm leading-relaxed">Re-caning, timber frame repair and refinishing for antique and heirloom pieces.</p>
-        </a>
+    <p class="reveal eyebrow-label text-ink/60 text-xs mb-3 text-center">What's Included</p>
+    <h2 class="reveal font-display font-medium text-ink text-[1.5rem] sm:text-[1.85rem] tracking-[0.01em] uppercase text-center mb-14 sm:mb-16">Every Custom Piece</h2>
+
+    <div class="grid sm:grid-cols-2 gap-10 sm:gap-x-14 sm:gap-y-12 max-w-3xl mx-auto">
+      <div class="reveal text-center sm:text-left">
+        <svg class="mx-auto sm:mx-0 text-ink/70 mb-4" width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H10l-5 4v-4H6a2 2 0 0 1-2-2V8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        <h3 class="font-display text-lg text-ink mb-2">Design Consultation</h3>
+        <p class="text-muted text-sm leading-relaxed">We talk through size, shape and fabric before anything is built.</p>
       </div>
+      <div class="reveal reveal-delay-1 text-center sm:text-left">
+        <svg class="mx-auto sm:mx-0 text-ink/70 mb-4" width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M8 4v16M4 8h16" stroke="currentColor" stroke-width="1.4"/></svg>
+        <h3 class="font-display text-lg text-ink mb-2">Made-To-Measure Frames</h3>
+        <p class="text-muted text-sm leading-relaxed">Built to fit your space exactly — not adapted from an off-the-shelf shape.</p>
+      </div>
+      <div class="reveal reveal-delay-2 text-center sm:text-left">
+        <svg class="mx-auto sm:mx-0 text-ink/70 mb-4" width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M4 18l16 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <h3 class="font-display text-lg text-ink mb-2">Your Choice Of Fabric</h3>
+        <p class="text-muted text-sm leading-relaxed">Supply your own fabric, or choose from ours, with guarding and pre-shrinking available.</p>
+      </div>
+      <div class="reveal reveal-delay-3 text-center sm:text-left">
+        <svg class="mx-auto sm:mx-0 text-ink/70 mb-4" width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.5-3 7.7-7 9-4-1.3-7-4.5-7-9V6l7-3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3 class="font-display text-lg text-ink mb-2">Hand-Finished Upholstery</h3>
+        <p class="text-muted text-sm leading-relaxed">The same craftsmanship and attention to detail as our reupholstery work.</p>
+      </div>
+    </div>
     </div>
   </section>
 
-  <!-- WHERE WE'VE WORKED -->
-  <section class="bg-[#EDE7DF] px-6 sm:px-10 lg:px-14 py-16 sm:py-20">
-    <div class="max-w-[1400px] mx-auto">
-      <div class="reveal flex items-end justify-between mb-8 sm:mb-10">
-        <h2 class="font-display font-medium text-ink text-[1.5rem] sm:text-[1.85rem] tracking-[0.01em] uppercase">Where We've Worked</h2>
-        <div class="hidden sm:flex items-center gap-2">
-          <span class="w-9 h-9 rounded-full border border-ink/20 flex items-center justify-center text-ink/60"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="w-9 h-9 rounded-full border border-ink/20 flex items-center justify-center text-ink/60"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </div>
-      </div>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-        <div class="reveal">
-          <div class="blank-tile aspect-[4/3]"><span class="tile-mark"><svg width="24" height="24" viewBox="0 0 28 28" fill="none"><rect x="3.5" y="3.5" width="21" height="21" rx="2" stroke="currentColor" stroke-width="1.3" stroke-dasharray="2.5 3"/><path d="M4 19l6-6 4 4 5-7 5 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-          <p class="text-ink text-sm font-medium mt-3">Bisate Lodge</p>
-          <p class="text-muted text-xs mt-0.5">Custom Armchairs</p>
-        </div>
-        <div class="reveal reveal-delay-1">
-          <div class="blank-tile aspect-[4/3]"><span class="tile-mark"><svg width="24" height="24" viewBox="0 0 28 28" fill="none"><rect x="3.5" y="3.5" width="21" height="21" rx="2" stroke="currentColor" stroke-width="1.3" stroke-dasharray="2.5 3"/><path d="M4 19l6-6 4 4 5-7 5 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-          <p class="text-ink text-sm font-medium mt-3">Kings Pool Camp</p>
-          <p class="text-muted text-xs mt-0.5">Upholstered Headboards</p>
-        </div>
-        <div class="reveal reveal-delay-2">
-          <div class="blank-tile aspect-[4/3]"><span class="tile-mark"><svg width="24" height="24" viewBox="0 0 28 28" fill="none"><rect x="3.5" y="3.5" width="21" height="21" rx="2" stroke="currentColor" stroke-width="1.3" stroke-dasharray="2.5 3"/><path d="M4 19l6-6 4 4 5-7 5 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-          <p class="text-ink text-sm font-medium mt-3">Wilderness Safari Lodge</p>
-          <p class="text-muted text-xs mt-0.5">Custom Corner Suite</p>
-        </div>
-        <div class="reveal reveal-delay-3">
-          <div class="blank-tile aspect-[4/3]"><span class="tile-mark"><svg width="24" height="24" viewBox="0 0 28 28" fill="none"><rect x="3.5" y="3.5" width="21" height="21" rx="2" stroke="currentColor" stroke-width="1.3" stroke-dasharray="2.5 3"/><path d="M4 19l6-6 4 4 5-7 5 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-          <p class="text-ink text-sm font-medium mt-3">Private Residence</p>
-          <p class="text-muted text-xs mt-0.5">Couch &amp; Armchair Reupholstery</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MODERN DESIGNS FOR OLDER FURNITURE -->
+  <!-- TYPES WE BUILD -->
   <section class="bg-cream px-6 sm:px-10 lg:px-14 py-16 sm:py-20">
-    <div class="max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+    <p class="reveal eyebrow-label text-ink/60 text-xs mb-3 text-center">Furniture We Build</p>
+    <h2 class="reveal font-display font-medium text-ink text-[1.5rem] sm:text-[1.85rem] tracking-[0.01em] uppercase text-center mb-14 sm:mb-16">Types We Build To Order</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 sm:gap-7 max-w-4xl mx-auto">
       <div class="reveal">
-        <p class="eyebrow-label text-ink/60 text-xs mb-5">Modern Designs For Older Furniture</p>
-        <h2 class="font-display font-medium text-ink text-[1.5rem] sm:text-[1.85rem] leading-[1.3] mb-5">
-          You have a favourite piece of furniture, or maybe want something special.
-        </h2>
-        <p class="text-muted leading-[1.8] text-[0.98rem] max-w-md mb-8">
-          At Style and Design, we will manufacture and make your vision a reality — working from your drawings, photographs, or a piece you already love.
-        </p>
-        <a href="reupholstery.html" class="btn-cream">
-          View Our Collection
-          <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+        <div class="photo-tile aspect-[4/3] mb-4"><img src="images/real-sofas.jpg" alt="Custom-built sofa" class="w-full h-full object-cover"></div>
+        <p class="font-display text-base sm:text-lg text-ink text-center">Sofas &amp; Corner Suites</p>
       </div>
-      <div class="reveal reveal-delay-1 photo-tile aspect-[9/8] lg:aspect-[4/3]">
-        <img src="images/favourite-piece-feature.jpg" alt="A deep green tufted sofa styled against a white panelled wall" class="w-full h-full object-cover">
+      <div class="reveal reveal-delay-1">
+        <div class="photo-tile aspect-[4/3] mb-4"><img src="images/real-headboards.jpg" alt="Custom-built headboard" class="w-full h-full object-cover"></div>
+        <p class="font-display text-base sm:text-lg text-ink text-center">Headboards &amp; Bedbases</p>
       </div>
-    </div>
-  </section>
-
-  <!-- OUR VALUES (process-style numbered row) -->
-  <section class="relative overflow-hidden px-6 sm:px-10 lg:px-14 py-16 sm:py-20">
-    <div class="absolute inset-0">
-      <img src="images/values-texture-bg.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover" style="filter: blur(0.4px) saturate(0.95);">
-      <div class="absolute inset-0" style="background: rgba(237,231,223,0.76);"></div>
-    </div>
-    <div class="relative z-10 text-lift">
-      <p class="reveal eyebrow-label text-ink/60 text-xs mb-3 text-center">What Drives Us</p>
-      <h2 class="reveal font-display font-medium text-ink text-[1.5rem] sm:text-[1.85rem] tracking-[0.01em] uppercase text-center mb-14 sm:mb-16">Our Values</h2>
-      <div class="value-row grid md:grid-cols-3 gap-10 max-w-3xl mx-auto">
-        <div class="reveal flex flex-col items-center text-center">
-          <span class="numbered-circle mb-5">01</span>
-          <h3 class="font-display text-xl text-ink mb-3">Creativity</h3>
-          <p class="text-ink/70 text-sm leading-relaxed">Unleash innovative and imaginative designs that transform spaces into unique expressions of style.</p>
-        </div>
-        <div class="reveal reveal-delay-1 flex flex-col items-center text-center">
-          <span class="numbered-circle mb-5">02</span>
-          <h3 class="font-display text-xl text-ink mb-3">Functionality</h3>
-          <p class="text-ink/70 text-sm leading-relaxed">Combining aesthetics with practicality, ensuring every design is not only beautiful but purposeful.</p>
-        </div>
-        <div class="reveal reveal-delay-2 flex flex-col items-center text-center">
-          <span class="numbered-circle mb-5">03</span>
-          <h3 class="font-display text-xl text-ink mb-3">Collaboration</h3>
-          <p class="text-ink/70 text-sm leading-relaxed">We work closely with clients to shape spaces that resonate with their aspirations.</p>
-        </div>
+      <div class="reveal reveal-delay-2">
+        <div class="photo-tile aspect-[4/3] mb-4"><img src="images/real-ottomans.jpg" alt="Custom-built ottoman" class="w-full h-full object-cover" style="object-position: 78% 55%;"></div>
+        <p class="font-display text-base sm:text-lg text-ink text-center">Ottomans</p>
       </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIAL -->
-  <section class="bg-cream px-6 sm:px-10 lg:px-14 py-16 sm:py-20">
-    <div class="reveal max-w-2xl mx-auto text-center">
-      <span class="quote-mark text-5xl text-ink/25">&ldquo;</span>
-      <p class="font-display text-ink text-[1.2rem] sm:text-[1.4rem] leading-[1.6] mt-2">
-        I have worked with Style &amp; Design, a family run business, for almost 20 years and we have built a solid understanding of each other with mutual respect. They have manufactured and re-upholstered most of the furniture required by me, as an interior decorator, for my clients.
-      </p>
-      <div class="flex items-center justify-center gap-3 mt-7">
-        <div class="w-11 h-11 rounded-full bg-ink/10 flex items-center justify-center font-display text-ink/70 text-sm">JP</div>
-        <div class="text-left">
-          <p class="text-ink text-sm font-medium">Julie Peatling</p>
-          <p class="text-muted text-xs">Interior Designer</p>
-        </div>
+      <div class="reveal">
+        <div class="photo-tile aspect-[4/3] mb-4"><img src="images/real-dining-chairs.jpg" alt="Custom-built dining chairs" class="w-full h-full object-cover"></div>
+        <p class="font-display text-base sm:text-lg text-ink text-center">Dining Chairs</p>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="photo-tile aspect-[4/3] mb-4"><img src="images/real-daybeds.jpg" alt="Custom-built daybed" class="w-full h-full object-cover"></div>
+        <p class="font-display text-base sm:text-lg text-ink text-center">Daybeds</p>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="photo-tile aspect-[4/3] mb-4"><img src="images/real-armchairs.jpg" alt="Custom-built occasional chair" class="w-full h-full object-cover"></div>
+        <p class="font-display text-base sm:text-lg text-ink text-center">Occasional Chairs</p>
+      </div>
+      <div class="reveal reveal-delay-3">
+        <div class="photo-tile aspect-[4/3] mb-4"><img src="images/real-chaise.jpg" alt="Custom-built chaise" class="w-full h-full object-cover"></div>
+        <p class="font-display text-base sm:text-lg text-ink text-center">Chaise</p>
+      </div>
+      <div class="reveal reveal-delay-4">
+        <div class="photo-tile aspect-[4/3] mb-4"><img src="images/real-bench-seating.jpg" alt="Custom-built bench seating" class="w-full h-full object-cover"></div>
+        <p class="font-display text-base sm:text-lg text-ink text-center">Bench Seating</p>
+      </div>
+      <div class="reveal">
+        <div class="photo-tile aspect-[4/3] mb-4"><img src="images/real-bean-bags.jpg" alt="Custom-built bean bag" class="w-full h-full object-cover"></div>
+        <p class="font-display text-base sm:text-lg text-ink text-center">Bean Bags</p>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="photo-tile aspect-[4/3] mb-4"><img src="images/real-barstools.jpg" alt="Custom-built barstools" class="w-full h-full object-cover"></div>
+        <p class="font-display text-base sm:text-lg text-ink text-center">Barstools</p>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="photo-tile aspect-[4/3] mb-4"><img src="images/real-wall-panels.jpg" alt="Upholstered wall panels" class="w-full h-full object-cover"></div>
+        <p class="font-display text-base sm:text-lg text-ink text-center">Wall Panels</p>
+      </div>
+      <div class="reveal reveal-delay-3">
+        <div class="photo-tile aspect-[4/3] mb-4"><img src="images/real-scatter-cushions.jpg" alt="Loose seating and scatter cushions" class="w-full h-full object-cover"></div>
+        <p class="font-display text-base sm:text-lg text-ink text-center">Loose Seating &amp; Scatter Cushions</p>
+      </div>
+      <div class="reveal reveal-delay-4">
+        <div class="blank-tile aspect-[4/3] mb-4"><span class="tile-mark"><svg width="72" height="72" viewBox="0 0 28 28" fill="none"><path d="M6 12V9a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><rect x="4" y="12" width="20" height="7" rx="1.3" stroke="currentColor" stroke-width="1.3"/><path d="M4.5 12a1.8 1.8 0 0 0-1.8 1.8v3a1.8 1.8 0 0 0 1.8 1.8M23.5 12a1.8 1.8 0 0 1 1.8 1.8v3a1.8 1.8 0 0 1-1.8 1.8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M4.5 19v2.5M23.5 19v2.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span></div>
+        <p class="font-display text-base sm:text-lg text-ink text-center">Protective Covers</p>
       </div>
     </div>
   </section>
 
-  <!-- TRUST BADGES -->
-  <section class="bg-[#EDE7DF] px-6 sm:px-10 lg:px-14 py-16 sm:py-20">
-    <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto text-center">
-      <div>
-        <svg class="mx-auto text-ink/70" width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 15.4l-4.8 2.5.9-5.4-3.9-3.8 5.4-.8L12 3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
-        <p class="text-ink text-sm mt-3">Custom<br>Furniture</p>
-      </div>
-      <div>
-        <svg class="mx-auto text-ink/70" width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 1 1 3 6.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M4 18v-4h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <p class="text-ink text-sm mt-3">Customer<br>Service</p>
-      </div>
-      <div>
-        <svg class="mx-auto text-ink/70" width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.5-3 7.7-7 9-4-1.3-7-4.5-7-9V6l7-3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
-        <p class="text-ink text-sm mt-3">Safe<br>Payment</p>
-      </div>
-      <div>
-        <svg class="mx-auto text-ink/70" width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="7" cy="18" r="1.6" stroke="currentColor" stroke-width="1.4"/><circle cx="17.5" cy="18" r="1.6" stroke="currentColor" stroke-width="1.4"/></svg>
-        <p class="text-ink text-sm mt-3">Free<br>Shipping</p>
+  <!-- LOOSE & FITTED COVERS (extra detail) -->
+  <section class="bg-cream px-6 sm:px-10 lg:px-14 pb-20 sm:pb-28">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal spotlight-panel overflow-hidden">
+        <div class="p-8 sm:p-12 lg:p-14">
+          <p class="eyebrow-label text-ink/50 text-xs mb-5">Part Of Custom Furniture</p>
+          <h2 class="font-display font-medium text-ink text-[1.9rem] sm:text-[2.3rem] leading-[1.1] tracking-[0.01em] uppercase mb-6">
+            Loose &amp; Fitted Covers
+          </h2>
+          <p class="text-muted leading-[1.85] text-[1.02rem] mb-8">
+            A lighter-touch alternative to full reupholstery. Loose and fitted covers are tailored precisely to your existing or newly built furniture — giving you a fresh look and everyday protection, with the option to remove and clean them without recovering the piece itself.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-x-6 gap-y-4">
+            <div class="check-item">
+              <svg class="text-ink/70 mt-0.5 shrink-0" width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.4"/><path d="M8 12.5l2.5 2.5L16 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <p class="text-ink/85 text-sm">Tailored to an exact fit</p>
+            </div>
+            <div class="check-item">
+              <svg class="text-ink/70 mt-0.5 shrink-0" width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.4"/><path d="M8 12.5l2.5 2.5L16 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <p class="text-ink/85 text-sm">Removable &amp; washable</p>
+            </div>
+            <div class="check-item">
+              <svg class="text-ink/70 mt-0.5 shrink-0" width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.4"/><path d="M8 12.5l2.5 2.5L16 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <p class="text-ink/85 text-sm">Protects a new custom piece</p>
+            </div>
+            <div class="check-item">
+              <svg class="text-ink/70 mt-0.5 shrink-0" width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.4"/><path d="M8 12.5l2.5 2.5L16 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <p class="text-ink/85 text-sm">A quick way to update a room</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -494,8 +424,8 @@
         <div class="absolute inset-0" style="background: rgba(231,223,212,0.76);"></div>
       </div>
       <div class="relative z-10 text-lift px-6 sm:px-10 lg:px-14 pt-16 pb-14 sm:pt-20 sm:pb-16 text-center">
-        <h2 class="font-display font-medium text-ink text-[1.4rem] sm:text-[1.7rem] tracking-[0.04em] uppercase">Have Questions?</h2>
-        <p class="text-ink/70 text-sm mt-3">Get in touch — we're always here to help with your fabric, sizing and design.</p>
+        <h2 class="font-display font-medium text-ink text-[1.4rem] sm:text-[1.7rem] tracking-[0.04em] uppercase">Have A Piece In Mind?</h2>
+        <p class="text-ink/70 text-sm mt-3">Share a photo or drawing — we'll take it from there.</p>
         <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
           <a href="https://wa.me/27791200897" target="_blank" rel="noopener" class="btn-cream">
             WhatsApp Us
@@ -626,8 +556,6 @@
     });
     mobileMenu.querySelectorAll('.mobile-link, .mobile-sublink').forEach((link) => {
       link.addEventListener('click', () => {
-        // Same-tab navigation is about to happen -- skip the close animation
-        // so the tap feels instant instead of jittering before the new page loads.
         mobileMenu.classList.remove('menu-open');
         siteNav.classList.remove('menu-is-open');
         document.documentElement.style.overflow = '';
