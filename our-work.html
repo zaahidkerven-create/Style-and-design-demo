@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Work — Style &amp; Design</title>
+<meta name="description" content="Real reupholstery, custom furniture, loose covers and cane &amp; timber restoration projects by Style and Design — from family homes to luxury safari lodges. Johannesburg.">
+<link rel="icon" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream: '#F3EEE9',
+          band: '#E7DFD4',
+          ink: '#241E17',
+          muted: '#8C8071',
+          button: '#EDDCC2',
+        },
+        fontFamily: {
+          display: ['"Playfair Display"', 'serif'],
+          sans: ['"Inter"', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+<style>
+  * { scroll-behavior: smooth; }
+  html, body { background: #F3EEE9; }
+  ::selection { background: #241E17; color: #F3EEE9; }
+
+  a, button { -webkit-tap-highlight-color: transparent; }
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid #241E17;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .eyebrow-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .btn-cream {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: #EDDCC2;
+    color: #241E17;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.75rem 1.4rem;
+    border-radius: 999px;
+    transition: transform 0.35s cubic-bezier(.16,1,.3,1), background-color 0.35s ease;
+  }
+  .btn-cream:hover { background: #F5E9D6; transform: translateY(-2px); }
+  .btn-cream:active { transform: translateY(0) scale(0.97); }
+
+  #siteNav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    background: transparent;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+  }
+  #siteNav.nav-scrolled {
+    background: rgba(243,238,233,0.92);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 1px 0 rgba(36,30,23,0.08);
+  }
+  #siteNav .nav-link, #siteNav .site-logo { color: #F3EEE9; transition: color 0.3s ease, opacity 0.3s ease; }
+  #siteNav .nav-link { opacity: 0.9; }
+  #siteNav .nav-link:hover { opacity: 1; }
+  #siteNav.nav-scrolled .nav-link, #siteNav.nav-scrolled .site-logo { color: #241E17; }
+  #siteNav #menuToggle { border-color: rgba(255,255,255,0.4); color: #F3EEE9; transition: border-color 0.3s ease, color 0.3s ease; }
+  #siteNav.nav-scrolled #menuToggle, #siteNav.menu-is-open #menuToggle { border-color: rgba(36,30,23,0.3); color: #241E17; }
+  #siteNav.nav-scrolled .btn-cream { box-shadow: 0 0 0 1px rgba(36,30,23,0.12); }
+
+  .site-logo { font-family: 'Playfair Display', serif; font-weight: 400; }
+
+  .hero-fixed { position: fixed; inset: 0; height: 100vh; height: 100svh; width: 100%; z-index: 0; overflow: hidden; }
+  .hero-spacer { height: 100vh; height: 100svh; width: 100%; }
+
+  .hero-wordmark {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: #FBF8F3;
+    line-height: 0.95;
+  }
+  .hero-photo { filter: sepia(0.25) saturate(1.15) brightness(0.92) contrast(1.05); }
+  #ourWorkHeroImg { object-position: 50% 60%; }
+  @media (max-width: 767px) { #ourWorkHeroImg { object-position: 50% 35%; } }
+
+  .hero-text > * {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.9s cubic-bezier(.16,1,.3,1), transform 0.9s cubic-bezier(.16,1,.3,1);
+  }
+  .hero-text.is-ready > *:nth-child(1) { transition-delay: 0.25s; }
+  .hero-text.is-ready > *:nth-child(2) { transition-delay: 0.4s; }
+  .hero-text.is-ready > * { opacity: 1; transform: translateY(0); }
+
+  .photo-tile { position: relative; overflow: hidden; border-radius: 16px; }
+  .photo-tile img { transition: transform 0.6s cubic-bezier(.16,1,.3,1); }
+  .gallery-item:hover .photo-tile img { transform: scale(1.04); }
+  .photo-tile.tile-contain { background: #E7DFD4; }
+  .photo-tile.tile-contain img { object-fit: contain; }
+
+  .masonry-grid { position: relative; }
+  .masonry-item {
+    position: absolute; top: 0; left: 0;
+    transition: left 0.35s cubic-bezier(.16,1,.3,1), top 0.35s cubic-bezier(.16,1,.3,1);
+  }
+  .masonry-item .photo-tile { border-radius: 16px; }
+  .masonry-item .photo-tile img { width: 100%; height: auto; display: block; }
+
+  [data-zoomable] { cursor: zoom-in; }
+
+  #lightbox {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(20,16,11,0.94);
+    display: none; align-items: center; justify-content: center;
+    padding: 4vh 4vw;
+    opacity: 0; transition: opacity 0.3s ease;
+  }
+  #lightbox.is-open { display: flex; opacity: 1; }
+  #lightbox img {
+    max-width: 100%; max-height: 92vh; width: auto; height: auto;
+    border-radius: 8px;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6);
+    cursor: zoom-out;
+    transform: scale(0.97); transition: transform 0.3s cubic-bezier(.16,1,.3,1);
+  }
+  #lightbox.is-open img { transform: scale(1); }
+  #lightboxClose {
+    position: fixed; top: 20px; right: 24px; z-index: 101;
+    width: 44px; height: 44px; border-radius: 999px;
+    background: rgba(243,238,233,0.12);
+    border: 1px solid rgba(243,238,233,0.3);
+    color: #F3EEE9;
+    display: grid; place-items: center;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+  }
+  #lightboxClose:hover { background: rgba(243,238,233,0.22); transform: scale(1.06); }
+
+  .chip {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: #6b5f4f;
+    background: transparent;
+    border: 1px solid rgba(36,30,23,0.18);
+    padding: 0.5rem 1.05rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+  }
+  .chip:hover { border-color: rgba(36,30,23,0.4); color: #241E17; background: rgba(36,30,23,0.04); }
+  .chip.chip-active { background: #241E17; color: #F3EEE9; border-color: #241E17; }
+
+  .ba-panel { position: relative; border-radius: 18px; overflow: hidden; background: #E7DFD4; }
+  .ba-panel img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(.16,1,.3,1); }
+  .ba-card:hover .ba-panel img { transform: scale(1.045); }
+  .ba-label {
+    position: absolute; top: 12px; left: 12px; z-index: 2;
+    font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.4rem 0.8rem; border-radius: 999px;
+    background: rgba(243,238,233,0.88); color: #241E17;
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  }
+
+  .ba-card {
+    background: #FBF8F3;
+    border-radius: 26px;
+    padding: 1.1rem 1.1rem 1.6rem;
+    box-shadow: 0 24px 46px -28px rgba(36,30,23,0.38), 0 8px 18px -12px rgba(36,30,23,0.14);
+    transition: transform 0.5s cubic-bezier(.16,1,.3,1), box-shadow 0.5s cubic-bezier(.16,1,.3,1);
+  }
+  .ba-card:hover { transform: translateY(-5px); box-shadow: 0 30px 56px -26px rgba(36,30,23,0.42), 0 10px 22px -12px rgba(36,30,23,0.18); }
+
+  .ba-arrow {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 34px; height: 34px; border-radius: 999px;
+    background: #241E17; color: #F3EEE9;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 3; box-shadow: 0 8px 20px -6px rgba(36,30,23,0.55), 0 0 0 4px #FBF8F3;
+  }
+
+  .testimonial-card {
+    background: #FBF8F3;
+    border-radius: 30px;
+    box-shadow: 0 30px 56px -30px rgba(36,30,23,0.3), 0 10px 22px -14px rgba(36,30,23,0.12);
+    transition: transform 0.5s cubic-bezier(.16,1,.3,1), box-shadow 0.5s cubic-bezier(.16,1,.3,1);
+  }
+  .testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 36px 64px -30px rgba(36,30,23,0.34), 0 12px 26px -14px rgba(36,30,23,0.16); }
+
+  .social-icon { transition: transform 0.3s cubic-bezier(.16,1,.3,1), opacity 0.3s ease; opacity: 0.75; }
+  .social-icon:hover { opacity: 1; transform: translateY(-2px); }
+
+  .reveal { opacity: 0; transform: translateY(34px); transition: opacity 1.1s cubic-bezier(.16,1,.3,1), transform 1.1s cubic-bezier(.16,1,.3,1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.08s; }
+  .reveal-delay-2 { transition-delay: 0.16s; }
+  .reveal-delay-3 { transition-delay: 0.24s; }
+  .reveal-delay-4 { transition-delay: 0.32s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .hero-text > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+
+  #mobileMenu {
+    position: fixed; inset: 0; z-index: 45;
+    background: #F3EEE9;
+    opacity: 0; visibility: hidden;
+    transform: translateY(-16px);
+    transition: opacity 0.55s cubic-bezier(.16,1,.3,1), visibility 0.55s cubic-bezier(.16,1,.3,1), transform 0.55s cubic-bezier(.16,1,.3,1);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem;
+  }
+  #mobileMenu.menu-open { opacity: 1; visibility: visible; transform: translateY(0); }
+  .mobile-link { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: #241E17; transition: opacity 0.3s ease; }
+  .mobile-link:hover { opacity: 0.6; }
+  .mobile-link.is-current { opacity: 1; text-decoration: underline; text-underline-offset: 6px; }
+
+  .nav-dropdown { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); padding-top: 14px; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+  .group:hover .nav-dropdown, .group:focus-within .nav-dropdown { opacity: 1; visibility: visible; }
+  .nav-dropdown-panel { min-width: 234px; background: #F3EEE9; border: 1px solid rgba(36,30,23,0.1); border-radius: 16px; box-shadow: 0 18px 40px -12px rgba(36,30,23,0.28), 0 2px 8px rgba(36,30,23,0.06); padding: 0.5rem; transform: translateY(6px); transition: transform 0.3s cubic-bezier(.16,1,.3,1); }
+  .group:hover .nav-dropdown-panel, .group:focus-within .nav-dropdown-panel { transform: translateY(0); }
+  .nav-dropdown-link { display: block; font-family: 'Inter', sans-serif; font-size: 0.85rem; color: #241E17; opacity: 0.78; padding: 0.65rem 0.9rem; border-radius: 10px; transition: background-color 0.25s ease, opacity 0.25s ease; white-space: nowrap; }
+  .nav-dropdown-link:hover { background: rgba(36,30,23,0.06); opacity: 1; }
+  .nav-chevron { transition: transform 0.3s cubic-bezier(.16,1,.3,1); }
+  .group:hover .nav-chevron, .group:focus-within .nav-chevron { transform: rotate(180deg); }
+
+  .mobile-services-toggle { display: inline-flex; align-items: center; gap: 0.5rem; background: none; border: none; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 1.75rem; color: #241E17; transition: opacity 0.3s ease; }
+  .mobile-services-toggle:hover { opacity: 0.6; }
+  .mobile-chevron { transition: transform 0.35s cubic-bezier(.16,1,.3,1); color: rgba(36,30,23,0.5); }
+  .mobile-services-toggle[aria-expanded="true"] .mobile-chevron { transform: rotate(180deg); }
+  .mobile-services-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s cubic-bezier(.16,1,.3,1); width: 100%; }
+  .mobile-services-panel.is-open { grid-template-rows: 1fr; }
+  .mobile-services-panel-inner { overflow: hidden; display: flex; flex-direction: column; align-items: center; gap: 0.625rem; }
+  .mobile-services-panel.is-open .mobile-services-panel-inner { padding-top: 0.5rem; }
+
+  .mobile-sublink { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #6b5f4f; transition: color 0.3s ease; }
+  .mobile-sublink:hover { color: #241E17; }
+
+  .nav-whatsapp { display: none; }
+  @media (min-width: 768px) { .nav-whatsapp { display: inline-flex; } }
+
+  .whatsapp-fab {
+    background: #EDDCC2;
+    color: #241E17;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset, 0 10px 24px -8px rgba(36,30,23,0.45), 0 2px 8px rgba(36,30,23,0.25);
+    transition: transform 0.35s cubic-bezier(.16,1,.3,1), box-shadow 0.35s cubic-bezier(.16,1,.3,1);
+  }
+  .whatsapp-fab:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 14px 30px -8px rgba(36,30,23,0.5), 0 4px 10px rgba(36,30,23,0.3); }
+  .whatsapp-fab:active { transform: translateY(0) scale(0.96); }
+
+  .text-lift, .text-lift * { text-shadow: 0 1px 2px rgba(250,246,240,0.95), 0 0 16px rgba(250,246,240,0.8); }
+
+  input::placeholder { color: #a89c8a; }
+</style>
+</head>
+<body class="font-sans antialiased">
+
+  <!-- STICKY NAV -->
+  <nav id="siteNav">
+    <div class="flex items-center justify-between px-6 sm:px-10 py-6">
+      <a href="index.html" class="site-logo text-sm sm:text-xl tracking-[0.03em] sm:tracking-[0.08em] whitespace-nowrap">STYLE &amp; DESIGN</a>
+      <ul class="hidden md:flex items-center gap-9">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li class="relative group">
+          <a href="reupholstery.html" class="nav-link inline-flex items-center gap-1.5">
+            Services
+            <svg class="nav-chevron mt-px" width="9" height="9" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="nav-dropdown">
+            <div class="nav-dropdown-panel">
+              <a href="reupholstery.html" class="nav-dropdown-link">Reupholstery &amp; Loose Covers</a>
+              <a href="custom-furniture.html" class="nav-dropdown-link">Custom Furniture</a>
+              <a href="fabric-guarding.html" class="nav-dropdown-link">Fabric Guarding &amp; Pre-Shrinking</a>
+              <a href="cane-timber-restoration.html" class="nav-dropdown-link">Cane &amp; Timber Restoration</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="our-work.html" class="nav-link !opacity-100">Our Work</a></li>
+        <li><a href="about.html" class="nav-link">About Us</a></li>
+        <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+      </ul>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="https://wa.me/27791200897" target="_blank" rel="noopener" aria-label="WhatsApp Us" class="nav-whatsapp btn-cream !w-10 !h-10 !p-0 justify-center sm:!w-auto sm:!h-auto sm:!px-[1.4rem] sm:!py-3">
+          <svg class="sm:hidden" width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.85.51 3.58 1.4 5.06L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.17c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.11.11-1.79-.11-.41-.13-.94-.3-1.62-.6-2.85-1.23-4.71-4.1-4.85-4.29-.14-.19-1.16-1.55-1.16-2.96 0-1.4.74-2.09 1-2.38.26-.28.57-.35.76-.35.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.57.81 1.98.88 2.12.07.14.11.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.14.43.2.5.31.06.12.06.68-.18 1.36Z"/></svg>
+          <span class="hidden sm:inline">WhatsApp Us</span>
+          <svg class="hidden sm:block" width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <button id="menuToggle" aria-label="Open menu" aria-expanded="false" class="md:hidden w-10 h-10 shrink-0 rounded-full border flex items-center justify-center relative z-50">
+          <svg id="menuIconOpen" width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M1 4h14M1 8h14M1 12h14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <svg id="menuIconClose" width="15" height="15" viewBox="0 0 16 16" fill="none" class="hidden"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div id="mobileMenu">
+    <a href="index.html" class="mobile-link">Home</a>
+    <button type="button" class="mobile-services-toggle" aria-expanded="false" aria-controls="mobileServicesPanel">
+      Services
+      <svg class="mobile-chevron" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div id="mobileServicesPanel" class="mobile-services-panel">
+      <div class="mobile-services-panel-inner">
+        <a href="reupholstery.html" class="mobile-sublink">Reupholstery</a>
+        <a href="custom-furniture.html" class="mobile-sublink">Custom Furniture</a>
+        <a href="fabric-guarding.html" class="mobile-sublink">Fabric Guarding &amp; Pre-Shrinking</a>
+        <a href="cane-timber-restoration.html" class="mobile-sublink">Cane &amp; Timber Restoration</a>
+      </div>
+    </div>
+    <a href="our-work.html" class="mobile-link is-current">Our Work</a>
+    <a href="about.html" class="mobile-link">About Us</a>
+    <a href="contact.html" class="mobile-link">Contact Us</a>
+  </div>
+
+  <a href="https://wa.me/27791200897" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="whatsapp-fab md:hidden fixed bottom-5 right-5 z-40 grid place-items-center w-14 h-14 rounded-full">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.85.51 3.58 1.4 5.06L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.17c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.11.11-1.79-.11-.41-.13-.94-.3-1.62-.6-2.85-1.23-4.71-4.1-4.85-4.29-.14-.19-1.16-1.55-1.16-2.96 0-1.4.74-2.09 1-2.38.26-.28.57-.35.76-.35.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.57.81 1.98.88 2.12.07.14.11.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.14.43.2.5.31.06.12.06.68-.18 1.36Z"/></svg>
+  </a>
+
+  <!-- FIXED FULL-SCREEN HERO -->
+  <div class="hero-fixed">
+    <picture class="contents">
+      <source media="(max-width: 767px)" srcset="images/ourwork-hero-custom.jpg">
+      <img id="ourWorkHeroImg" src="images/jason-wang-8J49mtYWu7E-unsplash.jpg" alt="A custom-built sofa styled in a modern interior by Style and Design" class="hero-photo w-full h-full object-cover">
+    </picture>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/55 via-black/20 to-black/50"></div>
+    <div class="absolute inset-0 bg-[#5a3a1a]/20 mix-blend-multiply"></div>
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 420px 260px at 10% 6%, rgba(10,8,4,0.6), transparent 70%);"></div>
+    <div class="hero-text absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6">
+      <h1 class="hero-wordmark text-[2.9rem] leading-[0.95] sm:text-[4.5rem] md:text-[5.5rem] lg:text-[6.5rem] tracking-[0.01em]">
+        OUR WORK
+      </h1>
+      <p class="eyebrow-label text-cream text-sm sm:text-base mt-6 sm:mt-8" style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">Real Projects, From Family Homes To Luxury Lodges</p>
+    </div>
+  </div>
+  <div class="hero-spacer" aria-hidden="true"></div>
+
+  <main class="relative z-10 bg-cream">
+
+  <!-- INTRO -->
+  <section class="bg-cream px-6 sm:px-10 lg:px-14 pt-20 pb-16 sm:pt-28 sm:pb-20">
+    <div class="max-w-2xl mx-auto text-center">
+      <p class="reveal eyebrow-label text-ink/60 text-xs sm:text-sm mb-6">A Legacy In Every Stitch</p>
+      <h2 class="reveal font-display font-medium text-ink text-[2rem] sm:text-[2.7rem] leading-[1.1] tracking-[0.01em] uppercase mb-7">
+        Pieces We've Actually Built
+      </h2>
+      <p class="reveal reveal-delay-1 text-muted leading-[1.85] text-[1.05rem] sm:text-[1.1rem]">
+        Since 1988, every piece to leave our workshop has been shaped by hand — family sofas reupholstered with care, loose covers cut to fit, cane seats rewoven strand by strand, and suites built new for lodges across Southern Africa. What follows is a glimpse of that work, gathered from decades of clients who trusted us with the furniture they love most.
+      </p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS & WORK FOR OUR CLIENTS -->
+  <section class="bg-cream px-6 sm:px-10 lg:px-14 py-16 sm:py-20">
+    <div class="reveal text-center max-w-lg mx-auto mb-16 sm:mb-20">
+      <p class="eyebrow-label text-ink/60 text-xs mb-3">Client Stories</p>
+      <h2 class="font-display font-medium text-ink text-[1.5rem] sm:text-[1.85rem] tracking-[0.01em] uppercase">Testimonials &amp; Work For Our Clients</h2>
+    </div>
+
+    <div class="max-w-[1300px] mx-auto flex flex-col gap-12 sm:gap-14">
+
+      <!-- Julie Peatling -->
+      <div class="reveal testimonial-card p-8 sm:p-10 lg:p-12 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+        <div>
+          <span class="font-display text-6xl text-[#EDDCC2] leading-none">&ldquo;</span>
+          <p class="font-display text-ink text-[1.1rem] sm:text-[1.25rem] leading-[1.6] mt-1">
+            I have worked with Style &amp; Design, a family run business, for almost 20 years and we have built a solid understanding of each other with mutual respect. They have manufactured and re-upholstered most of the furniture required by me, as an interior decorator, for my clients. They can easily work off drawings or pictures. I can highly recommend their workmanship in all aspects of their work.
+          </p>
+          <div class="mt-7 flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-full bg-ink/8 flex items-center justify-center font-display text-ink/70 text-sm shrink-0">JP</div>
+            <div>
+              <p class="text-ink text-sm font-medium">Julie Peatling</p>
+              <p class="text-muted text-xs mt-0.5">Julie Peatling Interiors</p>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 sm:gap-5">
+          <div class="photo-tile aspect-[3/4] mt-8"><img src="images/testimonials/julie-1.jpg" alt="A custom sofa suite and armchairs styled for Julie Peatling Interiors" class="w-full h-full object-cover"></div>
+          <div class="photo-tile aspect-[3/4]"><img src="images/testimonials/julie-2.jpg" alt="A dining suite built for Julie Peatling Interiors" class="w-full h-full object-cover"></div>
+        </div>
+      </div>
+
+      <!-- Momeen Bodiat -->
+      <div class="reveal testimonial-card p-8 sm:p-10 lg:p-12 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+        <div>
+          <span class="font-display text-6xl text-[#EDDCC2] leading-none">&ldquo;</span>
+          <p class="font-display text-ink text-[1.1rem] sm:text-[1.25rem] leading-[1.6] mt-1">
+            Thank you Style and Design for great service and superb workmanship! Attention to detail and meeting deadlines, assistance in sourcing material. Would highly recommend using them.
+          </p>
+          <div class="mt-7 flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-full bg-ink/8 flex items-center justify-center font-display text-ink/70 text-sm shrink-0">MB</div>
+            <div>
+              <p class="text-ink text-sm font-medium">Momeen Bodiat</p>
+              <p class="text-muted text-xs mt-0.5">Houghton Estate, Johannesburg</p>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 sm:gap-5">
+          <div class="photo-tile aspect-[3/4]"><img src="images/testimonials/momeen-1.jpg" alt="A reupholstered teal velvet sectional for Momeen Bodiat, Houghton Estate" class="w-full h-full object-cover"></div>
+          <div class="photo-tile aspect-[3/4] mt-8"><img src="images/testimonials/momeen-2.jpg" alt="A custom channel-tufted bed surround for Momeen Bodiat, Houghton Estate" class="w-full h-full object-cover"></div>
+        </div>
+      </div>
+
+      <!-- Nazley Domingo -->
+      <div class="reveal testimonial-card p-8 sm:p-10 lg:p-12 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+        <div>
+          <span class="font-display text-6xl text-[#EDDCC2] leading-none">&ldquo;</span>
+          <p class="font-display text-ink text-[1.1rem] sm:text-[1.25rem] leading-[1.6] mt-1">
+            From the headboards in every bedroom to the sectional anchoring our lounge, Style &amp; Design took our ideas and gave them proper shape — precise, beautifully finished, and exactly to the fabric and form we pictured. Nothing felt off-the-shelf. It's the kind of craftsmanship that makes a house feel considered.
+          </p>
+          <div class="mt-7 flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-full bg-ink/8 flex items-center justify-center font-display text-ink/70 text-sm shrink-0">ND</div>
+            <div>
+              <p class="text-ink text-sm font-medium">Nazley Domingo</p>
+              <p class="text-muted text-xs mt-0.5">Home Owner</p>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 sm:gap-5">
+          <div class="photo-tile aspect-[3/4] mt-8"><img src="images/testimonials/nazley-1.jpg" alt="A custom scalloped headboard built for Nazley Domingo" class="w-full h-full object-cover"></div>
+          <div class="photo-tile aspect-[3/4]"><img src="images/testimonials/nazley-2.jpg" alt="A custom low-profile sectional sofa built for Nazley Domingo" class="w-full h-full object-cover"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BEFORE & AFTER -->
+  <section class="bg-band px-6 sm:px-10 lg:px-14 py-16 sm:py-20">
+    <p class="reveal eyebrow-label text-ink/60 text-xs mb-3 text-center">Same Piece, New Life</p>
+    <h2 class="reveal font-display font-medium text-ink text-[1.5rem] sm:text-[1.85rem] tracking-[0.01em] uppercase text-center mb-14 sm:mb-16">Before &amp; After</h2>
+    <div class="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+      <div class="reveal ba-card">
+        <div class="relative grid grid-cols-2 gap-3">
+          <div class="ba-panel aspect-[3/4]">
+            <span class="ba-label">Before</span>
+            <img src="images/ourwork/ba-before-01.jpg" alt="Sofa before reupholstery, worn faded blue fabric" data-zoomable>
+          </div>
+          <div class="ba-panel aspect-[3/4]">
+            <span class="ba-label">After</span>
+            <img src="images/ourwork/sofas-couches-11.jpg" alt="Finished mid-century sofa in cream and burgundy" data-zoomable>
+          </div>
+          <div class="ba-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <h3 class="font-display text-lg text-ink mt-5 text-center">Mid-Century Sofa</h3>
+        <p class="text-muted text-sm mt-1.5 text-center">Worn and faded, rebuilt in cream with a burgundy seat.</p>
+      </div>
+      <div class="reveal reveal-delay-1 ba-card">
+        <div class="relative grid grid-cols-2 gap-3">
+          <div class="ba-panel aspect-[3/4]">
+            <span class="ba-label">Before</span>
+            <img src="images/ourwork/ba-before-02.jpg" alt="Tufted wingback chair before reupholstery, seat still raw" data-zoomable>
+          </div>
+          <div class="ba-panel aspect-[3/4]">
+            <span class="ba-label">After</span>
+            <img src="images/ourwork/armchairs-07.jpg" alt="Finished pair of cream tufted wingback chairs" data-zoomable>
+          </div>
+          <div class="ba-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <h3 class="font-display text-lg text-ink mt-5 text-center">Tufted Wingback Chair</h3>
+        <p class="text-muted text-sm mt-1.5 text-center">Frame stripped and rebuilt in a soft neutral weave.</p>
+      </div>
+      <div class="reveal reveal-delay-2 ba-card">
+        <div class="relative grid grid-cols-2 gap-3">
+          <div class="ba-panel aspect-[3/4]">
+            <span class="ba-label">Before</span>
+            <img src="images/ourwork/ba-before-03.jpg" alt="Loveseat before reupholstery, worn faded fabric" data-zoomable>
+          </div>
+          <div class="ba-panel aspect-[3/4]">
+            <span class="ba-label">After</span>
+            <img src="images/ourwork/sofas-couches-17.jpg" alt="Finished sofa in navy fabric with wood trim arms" data-zoomable>
+          </div>
+          <div class="ba-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <h3 class="font-display text-lg text-ink mt-5 text-center">Wood-Trimmed Sofa</h3>
+        <p class="text-muted text-sm mt-1.5 text-center">Worn and faded, rebuilt in a rich navy weave.</p>
+      </div>
+      <div class="reveal reveal-delay-1 ba-card">
+        <div class="relative grid grid-cols-2 gap-3">
+          <div class="ba-panel aspect-[3/4]">
+            <span class="ba-label">Before</span>
+            <img src="images/ourwork/ba-before-05.jpg" alt="Carved wingback armchair before reupholstery, original ornate fabric" data-zoomable>
+          </div>
+          <div class="ba-panel aspect-[3/4]">
+            <span class="ba-label">After</span>
+            <img src="images/ourwork/armchairs-41.jpg" alt="Finished wingback armchair in fresh poppy floral fabric" data-zoomable>
+          </div>
+          <div class="ba-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <h3 class="font-display text-lg text-ink mt-5 text-center">Carved Wingback Armchair</h3>
+        <p class="text-muted text-sm mt-1.5 text-center">The original frame, given a fresh floral print.</p>
+      </div>
+      <div class="reveal reveal-delay-2 ba-card">
+        <div class="relative grid grid-cols-2 gap-3">
+          <div class="ba-panel aspect-[3/4]">
+            <span class="ba-label">Before</span>
+            <img src="images/ourwork/ba-before-06.jpg" alt="Sofa before reupholstery, worn beige fabric" data-zoomable>
+          </div>
+          <div class="ba-panel aspect-[3/4]">
+            <span class="ba-label">After</span>
+            <img src="images/ourwork/sofas-couches-18.jpg" alt="Finished sofa in mint and tan two-tone fabric" data-zoomable>
+          </div>
+          <div class="ba-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <h3 class="font-display text-lg text-ink mt-5 text-center">Two-Tone Sofa</h3>
+        <p class="text-muted text-sm mt-1.5 text-center">Worn cushions rebuilt in a soft mint and tan finish.</p>
+      </div>
+      <div class="reveal ba-card">
+        <div class="relative grid grid-cols-2 gap-3">
+          <div class="ba-panel aspect-[3/4]">
+            <span class="ba-label">Before</span>
+            <img src="images/ourwork/ba-before-07.jpg" alt="Loveseat before reupholstery, cracked worn leather" data-zoomable>
+          </div>
+          <div class="ba-panel aspect-[3/4]">
+            <span class="ba-label">After</span>
+            <img src="images/ourwork/sofas-couches-01.jpg" alt="Finished channel-tufted leather loveseat with fold-out tray tables" data-zoomable>
+          </div>
+          <div class="ba-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <h3 class="font-display text-lg text-ink mt-5 text-center">Channel-Tufted Loveseat</h3>
+        <p class="text-muted text-sm mt-1.5 text-center">Cracked leather stripped back and rebuilt in rich burgundy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTERABLE GALLERY -->
+  <section class="bg-cream px-6 sm:px-10 lg:px-14 py-16 sm:py-20">
+    <p class="reveal eyebrow-label text-ink/60 text-xs mb-3 text-center">Browse By Type</p>
+    <h2 class="reveal font-display font-medium text-ink text-[1.5rem] sm:text-[1.85rem] tracking-[0.01em] uppercase text-center mb-10">The Gallery</h2>
+
+    <div class="reveal flex flex-wrap items-center justify-center gap-2.5 mb-12 sm:mb-16 max-w-3xl mx-auto">
+      <button type="button" class="chip chip-active" data-filter="all">All Work</button>
+      <button type="button" class="chip" data-filter="sofas-couches">Sofas &amp; Suites</button>
+      <button type="button" class="chip" data-filter="armchairs">Armchairs</button>
+      <button type="button" class="chip" data-filter="covers">Loose Covers</button>
+      <button type="button" class="chip" data-filter="headboards">Headboards &amp; Bedbases</button>
+      <button type="button" class="chip" data-filter="dining-chairs">Dining Chairs</button>
+      <button type="button" class="chip" data-filter="cane-timber">Cane &amp; Timber</button>
+      <button type="button" class="chip" data-filter="custom-furniture">Custom Furniture</button>
+      <button type="button" class="chip" data-filter="hospitality">Hospitality &amp; Lodges</button>
+      <button type="button" class="chip" data-filter="barstools">Barstools</button>
+      <button type="button" class="chip" data-filter="bean-bags">Bean Bags</button>
+      <button type="button" class="chip" data-filter="bench-seating">Bench Seating</button>
+      <button type="button" class="chip" data-filter="chaise">Chaise</button>
+      <button type="button" class="chip" data-filter="corner-suites">Corner Suites</button>
+      <button type="button" class="chip" data-filter="daybeds">Daybeds</button>
+      <button type="button" class="chip" data-filter="loose-seating">Loose Seating</button>
+      <button type="button" class="chip" data-filter="ottomans">Ottomans</button>
+      <button type="button" class="chip" data-filter="wall-panels">Wall Panels</button>
+      <button type="button" class="chip" data-filter="sleeper-couches">Sleeper Couches</button>
+    </div>
+
+    <div id="galleryGrid" class="masonry-grid max-w-[1400px] mx-auto">
+      <div class="gallery-item masonry-item reveal" data-category="sofas-couches">
+        <div class="photo-tile"><img src="images/ourwork/sofas-couches-15.jpg" alt="A reupholstered sofa by Style and Design" width="1600" height="720" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-36.jpg" alt="A reupholstered armchair by Style and Design" width="768" height="432" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-19.jpg" alt="A tailored loose cover by Style and Design" width="1600" height="900" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="headboards">
+        <div class="photo-tile"><img src="images/ourwork/headboards-16.jpg" alt="A custom headboard and bed base by Style and Design" width="512" height="384" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="dining-chairs">
+        <div class="photo-tile"><img src="images/ourwork/dining-chairs-03.jpg" alt="Reupholstered dining chairs by Style and Design" width="1600" height="720" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="cane-timber">
+        <div class="photo-tile"><img src="images/ourwork/timber-frames-02.jpg" alt="Cane and timber restoration by Style and Design" width="1200" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="custom-furniture">
+        <div class="photo-tile"><img src="images/ourwork/custom-furniture-06.jpg" alt="Custom furniture styled in a client home" width="1280" height="1008" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="hospitality">
+        <div class="photo-tile"><img src="images/ourwork/hospitality-09.jpg" alt="Style and Design furniture in a luxury lodge" width="677" height="453" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="barstools">
+        <div class="photo-tile"><img src="images/ourwork/barstools-05.jpg" alt="A custom barstool by Style and Design" width="360" height="540" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="bean-bags">
+        <div class="photo-tile"><img src="images/ourwork/bean-bags-01.jpg" alt="A bean bag by Style and Design" width="768" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="bench-seating">
+        <div class="photo-tile"><img src="images/ourwork/bench-seating-09.jpg" alt="Custom bench seating by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="chaise">
+        <div class="photo-tile"><img src="images/ourwork/chaise-06.jpg" alt="A custom chaise longue by Style and Design" width="639" height="480" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="corner-suites">
+        <div class="photo-tile"><img src="images/ourwork/corner-suites-02.jpg" alt="A custom corner suite by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="daybeds">
+        <div class="photo-tile"><img src="images/ourwork/daybeds-03.jpg" alt="A custom daybed by Style and Design" width="525" height="382" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="loose-seating">
+        <div class="photo-tile"><img src="images/ourwork/loose-seating-01.jpg" alt="Loose seating and scatter cushions by Style and Design" width="768" height="472" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="ottomans">
+        <div class="photo-tile"><img src="images/ourwork/ottomans-04.jpg" alt="A custom ottoman by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="wall-panels">
+        <div class="photo-tile"><img src="images/ourwork/wall-panels-05.jpg" alt="An upholstered wall panel by Style and Design" width="550" height="440" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sleeper-couches">
+        <div class="photo-tile"><img src="images/ourwork/sleeper-couches-02.jpg" alt="A sleeper couch by Style and Design" width="674" height="455" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sofas-couches">
+        <div class="photo-tile"><img src="images/ourwork/sofas-couches-01.jpg" alt="A reupholstered sofa by Style and Design" width="1280" height="720" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-19.jpg" alt="A reupholstered armchair by Style and Design" width="768" height="393" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-11.jpg" alt="A tailored loose cover by Style and Design" width="1600" height="1200" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="headboards">
+        <div class="photo-tile"><img src="images/ourwork/headboards-07.jpg" alt="A custom headboard and bed base by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="dining-chairs">
+        <div class="photo-tile"><img src="images/ourwork/dining-chairs-08.jpg" alt="Reupholstered dining chairs by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="cane-timber">
+        <div class="photo-tile"><img src="images/ourwork/cane-wicker-01.jpg" alt="Cane and timber restoration by Style and Design" width="576" height="1344" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="custom-furniture">
+        <div class="photo-tile"><img src="images/ourwork/custom-furniture-03.jpg" alt="Custom furniture styled in a client home" width="1280" height="1008" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="hospitality">
+        <div class="photo-tile"><img src="images/ourwork/hospitality-05.jpg" alt="Style and Design furniture in a luxury lodge" width="900" height="600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="barstools">
+        <div class="photo-tile"><img src="images/ourwork/barstools-03.jpg" alt="A custom barstool by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="bench-seating">
+        <div class="photo-tile"><img src="images/ourwork/bench-seating-04.jpg" alt="Custom bench seating by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="chaise">
+        <div class="photo-tile"><img src="images/ourwork/chaise-01.jpg" alt="A custom chaise longue by Style and Design" width="425" height="425" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="corner-suites">
+        <div class="photo-tile"><img src="images/ourwork/corner-suites-06.jpg" alt="A custom corner suite by Style and Design" width="768" height="432" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="daybeds">
+        <div class="photo-tile"><img src="images/ourwork/daybeds-01.jpg" alt="A custom daybed by Style and Design" width="554" height="554" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="loose-seating">
+        <div class="photo-tile"><img src="images/ourwork/loose-seating-07.jpg" alt="Loose seating and scatter cushions by Style and Design" width="768" height="512" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="ottomans">
+        <div class="photo-tile"><img src="images/ourwork/ottomans-19.jpg" alt="A custom ottoman by Style and Design" width="432" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="wall-panels">
+        <div class="photo-tile"><img src="images/ourwork/wall-panels-02.jpg" alt="An upholstered wall panel by Style and Design" width="640" height="480" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sleeper-couches">
+        <div class="photo-tile"><img src="images/ourwork/sleeper-couches-04.jpg" alt="A sleeper couch by Style and Design" width="768" height="432" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sofas-couches">
+        <div class="photo-tile"><img src="images/ourwork/sofas-couches-13.jpg" alt="A reupholstered sofa by Style and Design" width="1600" height="720" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-20.jpg" alt="A reupholstered armchair by Style and Design" width="470" height="439" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-37.jpg" alt="A tailored loose cover by Style and Design" width="1200" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="headboards">
+        <div class="photo-tile"><img src="images/ourwork/headboards-17.jpg" alt="A custom headboard and bed base by Style and Design" width="672" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="dining-chairs">
+        <div class="photo-tile"><img src="images/ourwork/dining-chairs-13.jpg" alt="Reupholstered dining chairs by Style and Design" width="432" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="cane-timber">
+        <div class="photo-tile"><img src="images/ourwork/timber-frames-03.jpg" alt="Cane and timber restoration by Style and Design" width="720" height="1344" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="custom-furniture">
+        <div class="photo-tile"><img src="images/ourwork/custom-furniture-04.jpg" alt="Custom furniture styled in a client home" width="409" height="323" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="hospitality">
+        <div class="photo-tile"><img src="images/ourwork/hospitality-02.jpg" alt="Style and Design furniture in a luxury lodge" width="679" height="452" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="barstools">
+        <div class="photo-tile"><img src="images/ourwork/barstools-08.jpg" alt="A custom barstool by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="bench-seating">
+        <div class="photo-tile"><img src="images/ourwork/bench-seating-08.jpg" alt="Custom bench seating by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="chaise">
+        <div class="photo-tile"><img src="images/ourwork/chaise-03.jpg" alt="A custom chaise longue by Style and Design" width="639" height="480" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="corner-suites">
+        <div class="photo-tile"><img src="images/ourwork/corner-suites-05.jpg" alt="A custom corner suite by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="daybeds">
+        <div class="photo-tile"><img src="images/ourwork/daybeds-06.jpg" alt="A custom daybed by Style and Design" width="554" height="554" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="loose-seating">
+        <div class="photo-tile"><img src="images/ourwork/loose-seating-04.jpg" alt="Loose seating and scatter cushions by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="ottomans">
+        <div class="photo-tile"><img src="images/ourwork/ottomans-08.jpg" alt="A custom ottoman by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="wall-panels">
+        <div class="photo-tile"><img src="images/ourwork/wall-panels-04.jpg" alt="An upholstered wall panel by Style and Design" width="616" height="440" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sleeper-couches">
+        <div class="photo-tile"><img src="images/ourwork/sleeper-couches-03.jpg" alt="A sleeper couch by Style and Design" width="600" height="450" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sofas-couches">
+        <div class="photo-tile"><img src="images/ourwork/sofas-couches-14.jpg" alt="A reupholstered sofa by Style and Design" width="1600" height="720" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-28.jpg" alt="A reupholstered armchair by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-25.jpg" alt="A tailored loose cover by Style and Design" width="1200" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="headboards">
+        <div class="photo-tile"><img src="images/ourwork/headboards-10.jpg" alt="A custom headboard and bed base by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="dining-chairs">
+        <div class="photo-tile"><img src="images/ourwork/dining-chairs-21.jpg" alt="Reupholstered dining chairs by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="cane-timber">
+        <div class="photo-tile"><img src="images/ourwork/timber-frames-01.jpg" alt="Cane and timber restoration by Style and Design" width="1200" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="custom-furniture">
+        <div class="photo-tile"><img src="images/ourwork/custom-furniture-02.jpg" alt="Custom furniture styled in a client home" width="819" height="645" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="hospitality">
+        <div class="photo-tile"><img src="images/ourwork/hospitality-11.jpg" alt="Style and Design furniture in a luxury lodge" width="1600" height="1067" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="barstools">
+        <div class="photo-tile"><img src="images/ourwork/barstools-04.jpg" alt="A custom barstool by Style and Design" width="383" height="344" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="bench-seating">
+        <div class="photo-tile"><img src="images/ourwork/bench-seating-05.jpg" alt="Custom bench seating by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="chaise">
+        <div class="photo-tile"><img src="images/ourwork/chaise-02.jpg" alt="A custom chaise longue by Style and Design" width="768" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="corner-suites">
+        <div class="photo-tile"><img src="images/ourwork/corner-suites-04.jpg" alt="A custom corner suite by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="daybeds">
+        <div class="photo-tile"><img src="images/ourwork/daybeds-02.jpg" alt="A custom daybed by Style and Design" width="739" height="415" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="loose-seating">
+        <div class="photo-tile"><img src="images/ourwork/loose-seating-03.jpg" alt="Loose seating and scatter cushions by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="ottomans">
+        <div class="photo-tile"><img src="images/ourwork/ottomans-07.jpg" alt="A custom ottoman by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="wall-panels">
+        <div class="photo-tile"><img src="images/ourwork/wall-panels-01.jpg" alt="An upholstered wall panel by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sleeper-couches">
+        <div class="photo-tile"><img src="images/ourwork/sleeper-couches-01.jpg" alt="A sleeper couch by Style and Design" width="768" height="432" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sofas-couches">
+        <div class="photo-tile"><img src="images/ourwork/sofas-couches-18.jpg" alt="A reupholstered sofa by Style and Design" width="1600" height="720" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-05.jpg" alt="A reupholstered armchair by Style and Design" width="576" height="1344" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-13.jpg" alt="A tailored loose cover by Style and Design" width="720" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="headboards">
+        <div class="photo-tile"><img src="images/ourwork/headboards-03.jpg" alt="A custom headboard and bed base by Style and Design" width="1280" height="720" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="dining-chairs">
+        <div class="photo-tile"><img src="images/ourwork/dining-chairs-19.jpg" alt="Reupholstered dining chairs by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="custom-furniture">
+        <div class="photo-tile"><img src="images/ourwork/custom-furniture-01.jpg" alt="Custom furniture styled in a client home" width="1280" height="896" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="hospitality">
+        <div class="photo-tile"><img src="images/ourwork/hospitality-12.jpg" alt="Style and Design furniture in a luxury lodge" width="1600" height="1067" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="barstools">
+        <div class="photo-tile"><img src="images/ourwork/barstools-02.jpg" alt="A custom barstool by Style and Design" width="500" height="613" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="bench-seating">
+        <div class="photo-tile"><img src="images/ourwork/bench-seating-03.jpg" alt="Custom bench seating by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="chaise">
+        <div class="photo-tile"><img src="images/ourwork/chaise-05.jpg" alt="A custom chaise longue by Style and Design" width="300" height="300" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="corner-suites">
+        <div class="photo-tile"><img src="images/ourwork/corner-suites-03.jpg" alt="A custom corner suite by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="daybeds">
+        <div class="photo-tile"><img src="images/ourwork/daybeds-05.jpg" alt="A custom daybed by Style and Design" width="600" height="400" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="loose-seating">
+        <div class="photo-tile"><img src="images/ourwork/loose-seating-06.jpg" alt="Loose seating and scatter cushions by Style and Design" width="431" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="ottomans">
+        <div class="photo-tile"><img src="images/ourwork/ottomans-15.jpg" alt="A custom ottoman by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="wall-panels">
+        <div class="photo-tile"><img src="images/ourwork/wall-panels-03.jpg" alt="An upholstered wall panel by Style and Design" width="400" height="386" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sofas-couches">
+        <div class="photo-tile"><img src="images/ourwork/sofas-couches-04.jpg" alt="A reupholstered sofa by Style and Design" width="1280" height="864" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-13.jpg" alt="A reupholstered armchair by Style and Design" width="768" height="432" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-02.jpg" alt="A tailored loose cover by Style and Design" width="1200" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="headboards">
+        <div class="photo-tile"><img src="images/ourwork/headboards-14.jpg" alt="A custom headboard and bed base by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="dining-chairs">
+        <div class="photo-tile"><img src="images/ourwork/dining-chairs-04.jpg" alt="Reupholstered dining chairs by Style and Design" width="1600" height="901" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="custom-furniture">
+        <div class="photo-tile"><img src="images/ourwork/custom-furniture-05.jpg" alt="Custom furniture styled in a client home" width="1280" height="1008" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="hospitality">
+        <div class="photo-tile"><img src="images/ourwork/hospitality-14.jpg" alt="Style and Design furniture in a luxury lodge" width="1600" height="900" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="barstools">
+        <div class="photo-tile"><img src="images/ourwork/barstools-07.jpg" alt="A custom barstool by Style and Design" width="432" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="bench-seating">
+        <div class="photo-tile"><img src="images/ourwork/bench-seating-07.jpg" alt="Custom bench seating by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="chaise">
+        <div class="photo-tile"><img src="images/ourwork/chaise-04.jpg" alt="A custom chaise longue by Style and Design" width="640" height="479" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="corner-suites">
+        <div class="photo-tile"><img src="images/ourwork/corner-suites-07.jpg" alt="A custom corner suite by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="daybeds">
+        <div class="photo-tile"><img src="images/ourwork/daybeds-04.jpg" alt="A custom daybed by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="loose-seating">
+        <div class="photo-tile"><img src="images/ourwork/loose-seating-05.jpg" alt="Loose seating and scatter cushions by Style and Design" width="768" height="432" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="ottomans">
+        <div class="photo-tile"><img src="images/ourwork/ottomans-11.jpg" alt="A custom ottoman by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sofas-couches">
+        <div class="photo-tile"><img src="images/ourwork/sofas-couches-20.jpg" alt="A reupholstered sofa by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-02.jpg" alt="A reupholstered armchair by Style and Design" width="720" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-01.jpg" alt="A tailored loose cover by Style and Design" width="1200" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="headboards">
+        <div class="photo-tile"><img src="images/ourwork/headboards-09.jpg" alt="A custom headboard and bed base by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="dining-chairs">
+        <div class="photo-tile"><img src="images/ourwork/dining-chairs-11.jpg" alt="Reupholstered dining chairs by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="hospitality">
+        <div class="photo-tile"><img src="images/ourwork/hospitality-03.jpg" alt="Style and Design furniture in a luxury lodge" width="698" height="440" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="barstools">
+        <div class="photo-tile"><img src="images/ourwork/barstools-01.jpg" alt="A custom barstool by Style and Design" width="554" height="554" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="bench-seating">
+        <div class="photo-tile"><img src="images/ourwork/bench-seating-06.jpg" alt="Custom bench seating by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="corner-suites">
+        <div class="photo-tile"><img src="images/ourwork/corner-suites-01.jpg" alt="A custom corner suite by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="daybeds">
+        <div class="photo-tile"><img src="images/ourwork/daybeds-07.jpg" alt="A custom daybed by Style and Design" width="637" height="481" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="loose-seating">
+        <div class="photo-tile"><img src="images/ourwork/loose-seating-02.jpg" alt="Loose seating and scatter cushions by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="ottomans">
+        <div class="photo-tile"><img src="images/ourwork/ottomans-20.jpg" alt="A custom ottoman by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sofas-couches">
+        <div class="photo-tile"><img src="images/ourwork/sofas-couches-16.jpg" alt="A reupholstered sofa by Style and Design" width="1600" height="901" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-09.jpg" alt="A reupholstered armchair by Style and Design" width="720" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-30.jpg" alt="A tailored loose cover by Style and Design" width="1200" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="headboards">
+        <div class="photo-tile"><img src="images/ourwork/headboards-05.jpg" alt="A custom headboard and bed base by Style and Design" width="1600" height="1200" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="dining-chairs">
+        <div class="photo-tile"><img src="images/ourwork/dining-chairs-05.jpg" alt="Reupholstered dining chairs by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="hospitality">
+        <div class="photo-tile"><img src="images/ourwork/hospitality-08.jpg" alt="Style and Design furniture in a luxury lodge" width="900" height="600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="barstools">
+        <div class="photo-tile"><img src="images/ourwork/barstools-06.jpg" alt="A custom barstool by Style and Design" width="554" height="554" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="bench-seating">
+        <div class="photo-tile"><img src="images/ourwork/bench-seating-01.jpg" alt="Custom bench seating by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="corner-suites">
+        <div class="photo-tile"><img src="images/ourwork/corner-suites-08.jpg" alt="A custom corner suite by Style and Design" width="768" height="432" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="ottomans">
+        <div class="photo-tile"><img src="images/ourwork/ottomans-05.jpg" alt="A custom ottoman by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sofas-couches">
+        <div class="photo-tile"><img src="images/ourwork/sofas-couches-21.jpg" alt="A reupholstered sofa by Style and Design" width="768" height="512" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-31.jpg" alt="A reupholstered armchair by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-22.jpg" alt="A tailored loose cover by Style and Design" width="1600" height="1200" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="headboards">
+        <div class="photo-tile"><img src="images/ourwork/headboards-13.jpg" alt="A custom headboard and bed base by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="dining-chairs">
+        <div class="photo-tile"><img src="images/ourwork/dining-chairs-14.jpg" alt="Reupholstered dining chairs by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="hospitality">
+        <div class="photo-tile"><img src="images/ourwork/hospitality-06.jpg" alt="Style and Design furniture in a luxury lodge" width="900" height="600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="bench-seating">
+        <div class="photo-tile"><img src="images/ourwork/bench-seating-02.jpg" alt="Custom bench seating by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="corner-suites">
+        <div class="photo-tile"><img src="images/ourwork/corner-suites-09.jpg" alt="A custom corner suite by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="ottomans">
+        <div class="photo-tile"><img src="images/ourwork/ottomans-17.jpg" alt="A custom ottoman by Style and Design" width="432" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sofas-couches">
+        <div class="photo-tile"><img src="images/ourwork/sofas-couches-09.jpg" alt="A reupholstered sofa by Style and Design" width="1600" height="778" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-38.jpg" alt="A reupholstered armchair by Style and Design" width="432" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-10.jpg" alt="A tailored loose cover by Style and Design" width="778" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="headboards">
+        <div class="photo-tile"><img src="images/ourwork/headboards-15.jpg" alt="A custom headboard and bed base by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="dining-chairs">
+        <div class="photo-tile"><img src="images/ourwork/dining-chairs-10.jpg" alt="Reupholstered dining chairs by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="hospitality">
+        <div class="photo-tile"><img src="images/ourwork/hospitality-01.jpg" alt="Style and Design furniture in a luxury lodge" width="774" height="396" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="ottomans">
+        <div class="photo-tile"><img src="images/ourwork/ottomans-12.jpg" alt="A custom ottoman by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sofas-couches">
+        <div class="photo-tile"><img src="images/ourwork/sofas-couches-08.jpg" alt="A reupholstered sofa by Style and Design" width="1600" height="778" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-12.jpg" alt="A reupholstered armchair by Style and Design" width="432" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-08.jpg" alt="A tailored loose cover by Style and Design" width="1600" height="778" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="headboards">
+        <div class="photo-tile"><img src="images/ourwork/headboards-08.jpg" alt="A custom headboard and bed base by Style and Design" width="768" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="dining-chairs">
+        <div class="photo-tile"><img src="images/ourwork/dining-chairs-02.jpg" alt="Reupholstered dining chairs by Style and Design" width="1200" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="hospitality">
+        <div class="photo-tile"><img src="images/ourwork/hospitality-07.jpg" alt="Style and Design furniture in a luxury lodge" width="900" height="600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="ottomans">
+        <div class="photo-tile"><img src="images/ourwork/ottomans-14.jpg" alt="A custom ottoman by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sofas-couches">
+        <div class="photo-tile"><img src="images/ourwork/sofas-couches-11.jpg" alt="A reupholstered sofa by Style and Design" width="1600" height="720" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-18.jpg" alt="A reupholstered armchair by Style and Design" width="739" height="415" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-43.jpg" alt="A tailored loose cover by Style and Design" width="450" height="450" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="headboards">
+        <div class="photo-tile"><img src="images/ourwork/headboards-04.jpg" alt="A custom headboard and bed base by Style and Design" width="1600" height="1200" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="dining-chairs">
+        <div class="photo-tile"><img src="images/ourwork/dining-chairs-09.jpg" alt="Reupholstered dining chairs by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="hospitality">
+        <div class="photo-tile"><img src="images/ourwork/hospitality-04.jpg" alt="Style and Design furniture in a luxury lodge" width="900" height="600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="ottomans">
+        <div class="photo-tile"><img src="images/ourwork/ottomans-10.jpg" alt="A custom ottoman by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sofas-couches">
+        <div class="photo-tile"><img src="images/ourwork/sofas-couches-12.jpg" alt="A reupholstered sofa by Style and Design" width="1280" height="605" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-16.jpg" alt="A reupholstered armchair by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-32.jpg" alt="A tailored loose cover by Style and Design" width="1152" height="864" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="headboards">
+        <div class="photo-tile"><img src="images/ourwork/headboards-11.jpg" alt="A custom headboard and bed base by Style and Design" width="384" height="512" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="dining-chairs">
+        <div class="photo-tile"><img src="images/ourwork/dining-chairs-17.jpg" alt="Reupholstered dining chairs by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="hospitality">
+        <div class="photo-tile"><img src="images/ourwork/hospitality-13.jpg" alt="Style and Design furniture in a luxury lodge" width="800" height="533" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="ottomans">
+        <div class="photo-tile"><img src="images/ourwork/ottomans-09.jpg" alt="A custom ottoman by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sofas-couches">
+        <div class="photo-tile"><img src="images/ourwork/sofas-couches-17.jpg" alt="A reupholstered sofa by Style and Design" width="1259" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-32.jpg" alt="A reupholstered armchair by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-40.jpg" alt="A tailored loose cover by Style and Design" width="780" height="1040" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="headboards">
+        <div class="photo-tile"><img src="images/ourwork/headboards-12.jpg" alt="A custom headboard and bed base by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="dining-chairs">
+        <div class="photo-tile"><img src="images/ourwork/dining-chairs-20.jpg" alt="Reupholstered dining chairs by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="hospitality">
+        <div class="photo-tile"><img src="images/ourwork/hospitality-10.jpg" alt="Style and Design furniture in a luxury lodge" width="800" height="533" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="ottomans">
+        <div class="photo-tile"><img src="images/ourwork/ottomans-02.jpg" alt="A custom ottoman by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sofas-couches">
+        <div class="photo-tile"><img src="images/ourwork/sofas-couches-02.jpg" alt="A reupholstered sofa by Style and Design" width="720" height="1280" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-22.jpg" alt="A reupholstered armchair by Style and Design" width="678" height="452" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-34.jpg" alt="A tailored loose cover by Style and Design" width="581" height="1032" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="headboards">
+        <div class="photo-tile"><img src="images/ourwork/headboards-06.jpg" alt="A custom headboard and bed base by Style and Design" width="1600" height="1200" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="dining-chairs">
+        <div class="photo-tile"><img src="images/ourwork/dining-chairs-01.jpg" alt="Reupholstered dining chairs by Style and Design" width="1600" height="901" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="ottomans">
+        <div class="photo-tile"><img src="images/ourwork/ottomans-06.jpg" alt="A custom ottoman by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sofas-couches">
+        <div class="photo-tile"><img src="images/ourwork/sofas-couches-19.jpg" alt="A reupholstered sofa by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-29.jpg" alt="A reupholstered armchair by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-28.jpg" alt="A tailored loose cover by Style and Design" width="1200" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="headboards">
+        <div class="photo-tile"><img src="images/ourwork/headboards-02.jpg" alt="A custom headboard and bed base by Style and Design" width="1200" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="dining-chairs">
+        <div class="photo-tile"><img src="images/ourwork/dining-chairs-16.jpg" alt="Reupholstered dining chairs by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="ottomans">
+        <div class="photo-tile"><img src="images/ourwork/ottomans-01.jpg" alt="A custom ottoman by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sofas-couches">
+        <div class="photo-tile"><img src="images/ourwork/sofas-couches-06.jpg" alt="A reupholstered sofa by Style and Design" width="1600" height="1200" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-23.jpg" alt="A reupholstered armchair by Style and Design" width="640" height="360" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-35.jpg" alt="A tailored loose cover by Style and Design" width="581" height="1032" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="headboards">
+        <div class="photo-tile"><img src="images/ourwork/headboards-01.jpg" alt="A custom headboard and bed base by Style and Design" width="1200" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="dining-chairs">
+        <div class="photo-tile"><img src="images/ourwork/dining-chairs-15.jpg" alt="Reupholstered dining chairs by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="ottomans">
+        <div class="photo-tile"><img src="images/ourwork/ottomans-16.jpg" alt="A custom ottoman by Style and Design" width="768" height="432" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sofas-couches">
+        <div class="photo-tile"><img src="images/ourwork/sofas-couches-22.jpg" alt="A reupholstered sofa by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-34.jpg" alt="A reupholstered armchair by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-12.jpg" alt="A tailored loose cover by Style and Design" width="1600" height="1200" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="headboards">
+        <div class="photo-tile"><img src="images/ourwork/headboards-18.jpg" alt="A custom headboard and bed base by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="dining-chairs">
+        <div class="photo-tile"><img src="images/ourwork/dining-chairs-12.jpg" alt="Reupholstered dining chairs by Style and Design" width="432" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="ottomans">
+        <div class="photo-tile"><img src="images/ourwork/ottomans-13.jpg" alt="A custom ottoman by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sofas-couches">
+        <div class="photo-tile"><img src="images/ourwork/sofas-couches-10.jpg" alt="A reupholstered sofa by Style and Design" width="1600" height="1200" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-37.jpg" alt="A reupholstered armchair by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-18.jpg" alt="A tailored loose cover by Style and Design" width="864" height="1152" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="dining-chairs">
+        <div class="photo-tile"><img src="images/ourwork/dining-chairs-07.jpg" alt="Reupholstered dining chairs by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="ottomans">
+        <div class="photo-tile"><img src="images/ourwork/ottomans-03.jpg" alt="A custom ottoman by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sofas-couches">
+        <div class="photo-tile"><img src="images/ourwork/sofas-couches-05.jpg" alt="A reupholstered sofa by Style and Design" width="720" height="1280" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-11.jpg" alt="A reupholstered armchair by Style and Design" width="432" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-42.jpg" alt="A tailored loose cover by Style and Design" width="805" height="381" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="dining-chairs">
+        <div class="photo-tile"><img src="images/ourwork/dining-chairs-18.jpg" alt="Reupholstered dining chairs by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="ottomans">
+        <div class="photo-tile"><img src="images/ourwork/ottomans-18.jpg" alt="A custom ottoman by Style and Design" width="432" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-10.jpg" alt="A reupholstered armchair by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-23.jpg" alt="A tailored loose cover by Style and Design" width="1200" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="dining-chairs">
+        <div class="photo-tile"><img src="images/ourwork/dining-chairs-06.jpg" alt="Reupholstered dining chairs by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="sofas-couches">
+        <div class="photo-tile"><img src="images/ourwork/sofas-couches-03.jpg" alt="A reupholstered sofa by Style and Design" width="1280" height="960" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-06.jpg" alt="A reupholstered armchair by Style and Design" width="901" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-29.jpg" alt="A tailored loose cover by Style and Design" width="1200" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-27.jpg" alt="A reupholstered armchair by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-24.jpg" alt="A tailored loose cover by Style and Design" width="1200" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-26.jpg" alt="A reupholstered armchair by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-16.jpg" alt="A tailored loose cover by Style and Design" width="1152" height="864" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-08.jpg" alt="A reupholstered armchair by Style and Design" width="901" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-15.jpg" alt="A tailored loose cover by Style and Design" width="720" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-07.jpg" alt="A reupholstered armchair by Style and Design" width="1600" height="901" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-45.jpg" alt="A tailored loose cover by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-14.jpg" alt="A reupholstered armchair by Style and Design" width="432" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-14.jpg" alt="A tailored loose cover by Style and Design" width="720" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-24.jpg" alt="A reupholstered armchair by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-33.jpg" alt="A tailored loose cover by Style and Design" width="1032" height="581" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-21.jpg" alt="A reupholstered armchair by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-03.jpg" alt="A tailored loose cover by Style and Design" width="1600" height="1200" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-42.jpg" alt="A reupholstered armchair by Style and Design" width="720" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-05.jpg" alt="A tailored loose cover by Style and Design" width="1200" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-40.jpg" alt="A reupholstered armchair by Style and Design" width="432" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-44.jpg" alt="A tailored loose cover by Style and Design" width="1600" height="1187" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-35.jpg" alt="A reupholstered armchair by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-21.jpg" alt="A tailored loose cover by Style and Design" width="1280" height="960" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-25.jpg" alt="A reupholstered armchair by Style and Design" width="768" height="576" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-46.jpg" alt="A tailored loose cover by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-04.jpg" alt="A reupholstered armchair by Style and Design" width="576" height="1344" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-36.jpg" alt="A tailored loose cover by Style and Design" width="900" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-39.jpg" alt="A reupholstered armchair by Style and Design" width="432" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-04.jpg" alt="A tailored loose cover by Style and Design" width="960" height="1344" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-30.jpg" alt="A reupholstered armchair by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-17.jpg" alt="A tailored loose cover by Style and Design" width="900" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-01.jpg" alt="A reupholstered armchair by Style and Design" width="1280" height="960" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-06.jpg" alt="A tailored loose cover by Style and Design" width="1200" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-33.jpg" alt="A reupholstered armchair by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-26.jpg" alt="A tailored loose cover by Style and Design" width="1280" height="1008" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-15.jpg" alt="A reupholstered armchair by Style and Design" width="432" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-07.jpg" alt="A tailored loose cover by Style and Design" width="1200" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-03.jpg" alt="A reupholstered armchair by Style and Design" width="576" height="1344" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-39.jpg" alt="A tailored loose cover by Style and Design" width="780" height="1040" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-17.jpg" alt="A reupholstered armchair by Style and Design" width="576" height="768" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-38.jpg" alt="A tailored loose cover by Style and Design" width="1600" height="1200" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="armchairs">
+        <div class="photo-tile"><img src="images/ourwork/armchairs-41.jpg" alt="A reupholstered armchair by Style and Design" width="901" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-31.jpg" alt="A tailored loose cover by Style and Design" width="1200" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-27.jpg" alt="A tailored loose cover by Style and Design" width="1200" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-09.jpg" alt="A tailored loose cover by Style and Design" width="778" height="1600" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-41.jpg" alt="A tailored loose cover by Style and Design" width="1600" height="1200" data-zoomable></div>
+      </div>
+      <div class="gallery-item masonry-item reveal" data-category="covers">
+        <div class="photo-tile"><img src="images/ourwork/covers-20.jpg" alt="A tailored loose cover by Style and Design" width="1200" height="1600" data-zoomable></div>
+      </div>
+    </div>
+
+    <p id="galleryEmpty" class="hidden text-center text-muted text-sm mt-10">No photos in this category yet.</p>
+  </section>
+
+  <!-- CTA BAND + FOOTER -->
+  <footer class="bg-band">
+    <div class="relative overflow-hidden reveal">
+      <div class="absolute inset-0">
+        <img src="images/cta-band-bg.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover" style="filter: blur(0.4px) saturate(0.95); object-position: center 70%;">
+        <div class="absolute inset-0" style="background: rgba(231,223,212,0.76);"></div>
+      </div>
+      <div class="relative z-10 text-lift px-6 sm:px-10 lg:px-14 pt-16 pb-14 sm:pt-20 sm:pb-16 text-center">
+        <h2 class="font-display font-medium text-ink text-[1.4rem] sm:text-[1.7rem] tracking-[0.04em] uppercase">Want Something Like This?</h2>
+        <p class="text-ink/70 text-sm mt-3">Send a photo of your piece or space — we'll take it from there.</p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a href="https://wa.me/27791200897" target="_blank" rel="noopener" class="btn-cream">
+            WhatsApp Us
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="tel:+27695745668" class="btn-cream !bg-transparent !border !border-ink/25 !text-ink hover:!bg-ink hover:!text-cream">Call 069 574 5668</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-ink/10 px-6 sm:px-10 lg:px-14 py-14">
+      <div class="max-w-[1400px] mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+        <div class="reveal">
+          <a href="index.html" class="site-logo !text-ink text-lg tracking-[0.06em]">STYLE &amp; DESIGN</a>
+          <p class="text-muted text-sm leading-relaxed mt-4 max-w-[220px]">Furniture and Upholstery Specialists — bespoke upholstery, Johannesburg, since 1988.</p>
+          <div class="flex items-center gap-4 mt-5">
+            <a href="https://www.instagram.com/styleanddesign_furniture/" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon text-ink">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.facebook.com/styleanddesign.co.za" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon text-ink">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M15 8.5h2.5V5H15c-2.2 0-4 1.8-4 4v2.5H8.5V15H11v6h3v-6h2.5l.5-3.5H14V9c0-.6.4-1 1-1Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <p class="eyebrow-label text-ink/60 text-xs mb-4">Navigate</p>
+          <ul class="space-y-3 text-sm text-ink/80">
+            <li><a href="index.html" class="hover:text-ink transition-colors duration-300">Home</a></li>
+            <li><a href="reupholstery.html" class="hover:text-ink transition-colors duration-300">Services</a></li>
+            <li><a href="our-work.html" class="hover:text-ink transition-colors duration-300">Our Work</a></li>
+            <li><a href="about.html" class="hover:text-ink transition-colors duration-300">About Us</a></li>
+            <li><a href="contact.html" class="hover:text-ink transition-colors duration-300">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="reveal reveal-delay-2">
+          <p class="eyebrow-label text-ink/60 text-xs mb-4">Contact</p>
+          <ul class="space-y-3 text-sm text-ink/80">
+            <li><a href="tel:+27695745668" class="hover:text-ink transition-colors duration-300">069 574 5668</a></li>
+            <li><a href="https://wa.me/27791200897" class="hover:text-ink transition-colors duration-300">079 120 0897</a></li>
+            <li><a href="mailto:info@styleanddesign.co.za" class="hover:text-ink transition-colors duration-300">info@styleanddesign.co.za</a></li>
+            <li>4 Ena Street, Florida, Johannesburg</li>
+          </ul>
+        </div>
+
+        <div class="reveal reveal-delay-3">
+          <p class="eyebrow-label text-ink/60 text-xs mb-4">Sign Up For Newsletter</p>
+          <form class="flex items-center gap-2" onsubmit="return false;">
+            <input type="email" required placeholder="Your email" class="min-w-0 flex-1 bg-cream border border-ink/15 rounded-full px-4 py-2.5 text-sm text-ink placeholder:text-ink/40 focus:border-ink/40 transition-colors duration-300">
+            <button type="submit" aria-label="Subscribe" class="w-10 h-10 shrink-0 rounded-full bg-ink text-cream flex items-center justify-center hover:bg-ink/85 transition-colors duration-300">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-ink/10 px-6 sm:px-10 lg:px-14 py-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-ink/55 text-center">
+        <p>Copyright 2026 &copy; Style and Design</p>
+        <p>Bespoke upholstery, Johannesburg — Southern Africa</p>
+      </div>
+    </div>
+  </footer>
+
+  </main>
+
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged photo">
+    <button type="button" id="lightboxClose" aria-label="Close enlarged photo">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <img id="lightboxImg" src="" alt="">
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    const siteNav = document.getElementById('siteNav');
+    function coverThreshold() { return window.innerHeight - 90; }
+    function onScroll() {
+      siteNav.classList.toggle('nav-scrolled', window.scrollY > coverThreshold());
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelector('.hero-text')?.classList.add('is-ready');
+      }, 150);
+    });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIconOpen = document.getElementById('menuIconOpen');
+    const menuIconClose = document.getElementById('menuIconClose');
+    const mobileServicesToggle = document.querySelector('.mobile-services-toggle');
+    const mobileServicesPanel = document.getElementById('mobileServicesPanel');
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('menu-open');
+      siteNav.classList.remove('menu-is-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuIconOpen.classList.remove('hidden');
+      menuIconClose.classList.add('hidden');
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+      mobileServicesPanel?.classList.remove('is-open');
+      mobileServicesToggle?.setAttribute('aria-expanded', 'false');
+    }
+    function openMobileMenu() {
+      mobileMenu.classList.add('menu-open');
+      siteNav.classList.add('menu-is-open');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      menuIconOpen.classList.add('hidden');
+      menuIconClose.classList.remove('hidden');
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    }
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      isOpen ? closeMobileMenu() : openMobileMenu();
+    });
+    mobileServicesToggle?.addEventListener('click', () => {
+      const isOpen = mobileServicesToggle.getAttribute('aria-expanded') === 'true';
+      mobileServicesToggle.setAttribute('aria-expanded', String(!isOpen));
+      mobileServicesPanel.classList.toggle('is-open', !isOpen);
+    });
+    mobileMenu.querySelectorAll('.mobile-link, .mobile-sublink').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('menu-open');
+        siteNav.classList.remove('menu-is-open');
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+      });
+    });
+    const mobileWhatsappLink = mobileMenu.querySelector('a[target="_blank"]');
+    if (mobileWhatsappLink) mobileWhatsappLink.addEventListener('click', closeMobileMenu);
+
+    // Gallery filter + JS masonry (CSS column-count leaves ragged gaps when the
+    // container has no fixed height, especially once items are filtered out —
+    // this measures every visible tile up front and places it into whichever
+    // column is currently shortest, so columns stay balanced with no gaps.)
+    const chips = document.querySelectorAll('.chip');
+    const galleryGrid = document.getElementById('galleryGrid');
+    const galleryItems = document.querySelectorAll('#galleryGrid .gallery-item');
+    const galleryEmpty = document.getElementById('galleryEmpty');
+
+    function columnCount() {
+      const w = window.innerWidth;
+      if (w >= 1024) return 4;
+      if (w >= 640) return 3;
+      return 2;
+    }
+
+    function layoutMasonry() {
+      const cols = columnCount();
+      const gap = window.innerWidth >= 640 ? 20 : 16;
+      const gridWidth = galleryGrid.clientWidth;
+      const colWidth = (gridWidth - gap * (cols - 1)) / cols;
+      const colHeights = new Array(cols).fill(0);
+
+      galleryItems.forEach((item) => {
+        if (item.style.display === 'none') return;
+        const img = item.querySelector('img');
+        const w = parseFloat(img.getAttribute('width')) || 1200;
+        const h = parseFloat(img.getAttribute('height')) || 900;
+        const itemHeight = colWidth * (h / w);
+
+        let shortest = 0;
+        for (let i = 1; i < cols; i++) {
+          if (colHeights[i] < colHeights[shortest]) shortest = i;
+        }
+        const x = shortest * (colWidth + gap);
+        const y = colHeights[shortest];
+
+        item.style.width = `${colWidth}px`;
+        item.style.left = `${x}px`;
+        item.style.top = `${y}px`;
+        colHeights[shortest] = y + itemHeight + gap;
+      });
+
+      galleryGrid.style.height = `${Math.max(...colHeights) - gap}px`;
+    }
+
+    let masonryResizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(masonryResizeTimer);
+      masonryResizeTimer = setTimeout(layoutMasonry, 120);
+    });
+
+    layoutMasonry();
+    window.addEventListener('load', layoutMasonry);
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        chips.forEach((c) => c.classList.remove('chip-active'));
+        chip.classList.add('chip-active');
+        const filter = chip.dataset.filter;
+        let visibleCount = 0;
+        galleryItems.forEach((item) => {
+          const show = filter === 'all' || item.dataset.category === filter;
+          item.style.display = show ? '' : 'none';
+          if (show) visibleCount++;
+        });
+        galleryEmpty.classList.toggle('hidden', visibleCount !== 0);
+        layoutMasonry();
+      });
+    });
+
+    // Lightbox: click any zoomable photo (gallery + before/after) to see it larger.
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    function openLightbox(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || '';
+      lightbox.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      document.body.style.overflow = '';
+      lightboxImg.src = '';
+    }
+    document.querySelectorAll('[data-zoomable]').forEach((img) => {
+      img.addEventListener('click', () => openLightbox(img.currentSrc || img.src, img.alt));
+    });
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox(); });
+  </script>
+</body>
+</html>

@@ -17,7 +17,7 @@ const nextN = existing.reduce((max, f) => {
 const filename = label ? `screenshot-${nextN}-${label}.png` : `screenshot-${nextN}.png`;
 const outPath = path.join(dir, filename);
 
-const browser = await puppeteer.launch({ headless: 'new' });
+const browser = await puppeteer.launch({ headless: 'shell' });
 const page = await browser.newPage();
 await page.setViewport({ width: 1440, height: 900 });
 await page.goto(url, { waitUntil: 'networkidle0' });

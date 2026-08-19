@@ -186,6 +186,17 @@
   .text-lift, .text-lift * { text-shadow: 0 1px 2px rgba(250,246,240,0.95), 0 0 16px rgba(250,246,240,0.8); }
 
   input::placeholder { color: #a89c8a; }
+  .nav-whatsapp { display: none; }
+  @media (min-width: 768px) { .nav-whatsapp { display: inline-flex; } }
+
+  .whatsapp-fab {
+    background: #EDDCC2;
+    color: #241E17;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset, 0 10px 24px -8px rgba(36,30,23,0.45), 0 2px 8px rgba(36,30,23,0.25);
+    transition: transform 0.35s cubic-bezier(.16,1,.3,1), box-shadow 0.35s cubic-bezier(.16,1,.3,1);
+  }
+  .whatsapp-fab:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 14px 30px -8px rgba(36,30,23,0.5), 0 4px 10px rgba(36,30,23,0.3); }
+  .whatsapp-fab:active { transform: translateY(0) scale(0.96); }
 </style>
 </head>
 <body class="font-sans antialiased">
@@ -203,18 +214,19 @@
           </a>
           <div class="nav-dropdown">
             <div class="nav-dropdown-panel">
-              <a href="reupholstery.html" class="nav-dropdown-link">Reupholstery</a>
+              <a href="reupholstery.html" class="nav-dropdown-link">Reupholstery &amp; Loose Covers</a>
               <a href="custom-furniture.html" class="nav-dropdown-link">Custom Furniture</a>
               <a href="fabric-guarding.html" class="nav-dropdown-link is-current">Fabric Guarding &amp; Pre-Shrinking</a>
               <a href="cane-timber-restoration.html" class="nav-dropdown-link">Cane &amp; Timber Restoration</a>
             </div>
           </div>
         </li>
+        <li><a href="our-work.html" class="nav-link">Our Work</a></li>
         <li><a href="about.html" class="nav-link">About Us</a></li>
         <li><a href="contact.html" class="nav-link">Contact Us</a></li>
       </ul>
       <div class="flex items-center gap-2 sm:gap-3">
-        <a href="https://wa.me/27791200897" target="_blank" rel="noopener" aria-label="WhatsApp Us" class="btn-cream !w-10 !h-10 !p-0 justify-center sm:!w-auto sm:!h-auto sm:!px-[1.4rem] sm:!py-3">
+        <a href="https://wa.me/27791200897" target="_blank" rel="noopener" aria-label="WhatsApp Us" class="nav-whatsapp btn-cream !w-10 !h-10 !p-0 justify-center sm:!w-auto sm:!h-auto sm:!px-[1.4rem] sm:!py-3">
           <svg class="sm:hidden" width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.85.51 3.58 1.4 5.06L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.17c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.11.11-1.79-.11-.41-.13-.94-.3-1.62-.6-2.85-1.23-4.71-4.1-4.85-4.29-.14-.19-1.16-1.55-1.16-2.96 0-1.4.74-2.09 1-2.38.26-.28.57-.35.76-.35.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.57.81 1.98.88 2.12.07.14.11.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.14.43.2.5.31.06.12.06.68-.18 1.36Z"/></svg>
           <span class="hidden sm:inline">WhatsApp Us</span>
           <svg class="hidden sm:block" width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -234,19 +246,20 @@
     </button>
     <div id="mobileServicesPanel" class="mobile-services-panel">
       <div class="mobile-services-panel-inner">
-        <a href="reupholstery.html" class="mobile-sublink">Reupholstery</a>
+        <a href="reupholstery.html" class="mobile-sublink">Reupholstery &amp; Loose Covers</a>
         <a href="custom-furniture.html" class="mobile-sublink">Custom Furniture</a>
         <a href="fabric-guarding.html" class="mobile-sublink is-current">Fabric Guarding &amp; Pre-Shrinking</a>
         <a href="cane-timber-restoration.html" class="mobile-sublink">Cane &amp; Timber Restoration</a>
       </div>
     </div>
+    <a href="our-work.html" class="mobile-link">Our Work</a>
     <a href="about.html" class="mobile-link">About Us</a>
     <a href="contact.html" class="mobile-link">Contact Us</a>
-    <a href="https://wa.me/27791200897" target="_blank" rel="noopener" class="btn-cream mt-4">
-      WhatsApp Us
-      <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
   </div>
+
+  <a href="https://wa.me/27791200897" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="whatsapp-fab md:hidden fixed bottom-5 right-5 z-40 grid place-items-center w-14 h-14 rounded-full">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.85.51 3.58 1.4 5.06L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.17c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.11.11-1.79-.11-.41-.13-.94-.3-1.62-.6-2.85-1.23-4.71-4.1-4.85-4.29-.14-.19-1.16-1.55-1.16-2.96 0-1.4.74-2.09 1-2.38.26-.28.57-.35.76-.35.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.57.81 1.98.88 2.12.07.14.11.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.14.43.2.5.31.06.12.06.68-.18 1.36Z"/></svg>
+  </a>
 
   <!-- FIXED FULL-SCREEN HERO -->
   <div class="hero-fixed">
@@ -402,6 +415,7 @@
           <ul class="space-y-3 text-sm text-ink/80">
             <li><a href="index.html" class="hover:text-ink transition-colors duration-300">Home</a></li>
             <li><a href="reupholstery.html" class="hover:text-ink transition-colors duration-300">Services</a></li>
+            <li><a href="our-work.html" class="hover:text-ink transition-colors duration-300">Our Work</a></li>
             <li><a href="about.html" class="hover:text-ink transition-colors duration-300">About Us</a></li>
             <li><a href="contact.html" class="hover:text-ink transition-colors duration-300">Contact Us</a></li>
           </ul>
